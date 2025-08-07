@@ -38,7 +38,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://instagram.com/cybexonics"
+                href="https://www.instagram.com/cybexonics.it_consultants?igsh=cDNwN3ByNm8wY2l2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded-full p-3 bg-transparent transition-colors duration-200 inline-flex items-center justify-center"
@@ -46,7 +46,7 @@ export default function Footer() {
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://linkedin.com/company/cybexonics"
+                href="https://www.linkedin.com/in/aayush-panchal-4111a7264?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded-full p-3 bg-transparent transition-colors duration-200 inline-flex items-center justify-center"
@@ -145,7 +145,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="border-t border-gray-800 mt-12 pt-8 text-center"
         >
-          <p className="text-gray-400 text-sm">© 2024 CYBEXONICS IT Consultants. All rights reserved.</p>
+          <p className="text-gray-400 text-sm">© 2025 CYBEXONICS IT CONSULATANTS PVT.LDT . All rights reserved.</p>
         </motion.div>
       </div>
     </footer>
