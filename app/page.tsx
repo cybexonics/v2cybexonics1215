@@ -213,7 +213,7 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We combine technical expertise with business understanding to deliver solutions that drive real results.
+              Where your business and startup ideas turn into reality.
             </p>
           </motion.div>
 
