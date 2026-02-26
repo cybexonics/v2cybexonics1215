@@ -37,15 +37,15 @@ const TrustedBySection = () => {
     {
       id: 5,
       name: 'Data Analytics Pro',
-      website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
-      logo: '/logos/sumant-industries.png',
+      website: "-",
+      logo: '/logos/data-analytics-pro.png',
       
     },
     {
       id: 6,
       name: 'Smart Business',
-      website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
-      logo: '/logos/sumant-industries.png',      
+      website: "-",
+      logo: '/logos/smart-business.png',      
     },
   ]
 
