@@ -10,8 +10,9 @@ const TrustedBySection = () => {
   const clients = [
     {
       id: 1,
-      name: 'Tech Innovations',
-      grayscaleUrl: '/logos/client-1-grayscale.png',
+      name: 'Sumant Industries',
+      website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
+      grayscaleUrl: '/logo/client1.png',
       colorUrl: '/logos/client-1-color.png',
     },
     {
