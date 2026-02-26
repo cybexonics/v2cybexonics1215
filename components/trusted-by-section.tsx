@@ -30,8 +30,7 @@ const TrustedBySection = () => {
       id: 4,
       name: 'Cloud Enterprises',
       website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
-      logo: '/logos/sumant-industries.png',
-    },
+      logo: '/logos/cloud-enterprises.png',
       
     },
     {
