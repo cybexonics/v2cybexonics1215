@@ -12,39 +12,39 @@ const TrustedBySection = () => {
       id: 1,
       name: 'Sumant Industries',
       website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
-      logo: '/logos/sumant-industries.png',
+      logo: '/logo/sumant-industries.png',
     },
     {
       id: 2,
       name: 'Lifelongwellness',
       website: "https://www.lifelongwellness.co.in/",
-      logo: '/logos/lifelongwellness.png',
+      logo: '/logo/lifelongwellness.png',
     },
     {
       id: 3,
       name: 'Darshan-uniforms',
       website: "https://www.darshan-uniform.com/",
-      logo: '/logos/darshan-uniforms.png',
+      logo: '/logo/darshan-uniforms.png',
     },
     {
       id: 4,
       name: 'Cloud Enterprises',
       website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
-      logo: '/logos/cloud-enterprises.png',
+      logo: '/logo/cloud-enterprises.png',
       
     },
     {
       id: 5,
       name: 'Data Analytics Pro',
       website: "-",
-      logo: '/logos/data-analytics-pro.png',
+      logo: '/logo/data-analytics-pro.png',
       
     },
     {
       id: 6,
       name: 'Smart Business',
       website: "-",
-      logo: '/logos/smart-business.png',      
+      logo: '/logo/smart-business.png',      
     },
   ]
 
