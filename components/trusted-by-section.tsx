@@ -12,43 +12,46 @@ const TrustedBySection = () => {
       id: 1,
       name: 'Sumant Industries',
       website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
-      grayscaleUrl: '/logos/client1.png',
-      colorUrl: '/logos/client-1-color.png',
+      logo: '/logos/sumant-industries.png',
     },
     {
       id: 2,
-      name: 'Digital Solutions',
-      grayscaleUrl: '/logos/client-2-grayscale.png',
-      colorUrl: '/logos/client-2-color.png',
+      name: 'Lifelongwellness',
+      website: "https://www.lifelongwellness.co.in/",
+      logo: '/logos/lifelongwellness.png',
     },
     {
       id: 3,
-      name: 'Future Systems',
-      grayscaleUrl: '/logos/client-3-grayscale.png',
-      colorUrl: '/logos/client-3-color.png',
+      name: 'Darshan-uniforms',
+      website: "https://www.darshan-uniform.com/",
+      logo: '/logos/darshan-uniforms.png',
     },
     {
       id: 4,
       name: 'Cloud Enterprises',
-      grayscaleUrl: '/logos/client-4-grayscale.png',
-      colorUrl: '/logos/client-4-color.png',
+      website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
+      logo: '/logos/sumant-industries.png',
+    },
+      
     },
     {
       id: 5,
       name: 'Data Analytics Pro',
-      grayscaleUrl: '/logos/client-5-grayscale.png',
-      colorUrl: '/logos/client-5-color.png',
+      website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
+      logo: '/logos/sumant-industries.png',
+      
     },
     {
       id: 6,
       name: 'Smart Business',
-      grayscaleUrl: '/logos/client-6-grayscale.png',
-      colorUrl: '/logos/client-6-color.png',
+      website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
+      logo: '/logos/sumant-industries.png',      
     },
   ]
 
   // Duplicate clients for seamless infinite scroll
-  const duplicatedClients = [...clients, ...clients]
+
+    const duplicatedClients = [...clients, ...clients]
 
   return (
     <section className="py-20 px-4 bg-white">
@@ -90,40 +93,25 @@ const TrustedBySection = () => {
               }}
               className="flex gap-12 whitespace-nowrap"
             >
-              {duplicatedClients.map((client, index) => (
-                <motion.div
-                  key={`${client.id}-${index}`}
-                  className="flex-shrink-0 h-20 w-40 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 group cursor-pointer overflow-hidden relative"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  {/* Grayscale version */}
-                  <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
-                    <div className="w-32 h-16 relative grayscale opacity-70">
-                      <div className="absolute inset-0 flex items-center justify-center text-center">
-                        <span className="text-sm font-semibold text-gray-400">{client.name}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Color version - appears on hover */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <div className="w-32 h-16 relative">
-                      <div className="absolute inset-0 flex items-center justify-center text-center">
-                        <span className="text-sm font-semibold text-red-600 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
-                          {client.name}
-                        </span>
-                      </div>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+               {duplicatedClients.map((client, index) => (
+  <motion.a
+    key={`${client.id}-${index}`}
+    href={client.website}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex-shrink-0 h-20 w-40 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 group cursor-pointer overflow-hidden"
+    whileHover={{ scale: 1.05 }}
+  >
+    <div className="w-32 h-16 relative">
+      <Image
+        src={client.logo}
+        alt={client.name}
+        fill
+        className="object-contain grayscale group-hover:grayscale-0 transition duration-300"
+      />
+    </div>
+  </motion.a>
+))}
 
           {/* Gradient overlays for smooth edges */}
           <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
