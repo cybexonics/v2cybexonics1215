@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useState } from 'react'
+import { ExternalLink } from 'lucide-react'
 
 const TrustedBySection = () => {
   const [isHovered, setIsHovered] = useState(false)
@@ -11,38 +12,44 @@ const TrustedBySection = () => {
     {
       id: 1,
       name: 'Tech Innovations',
-      grayscaleUrl: '/logos/client-1-grayscale.png',
-      colorUrl: '/logos/client-1-color.png',
+      logo: '/logos/client-1-color.png',
+      website: 'https://www.techinnovations.com',
+      description: 'Leading technology innovation company',
     },
     {
       id: 2,
       name: 'Digital Solutions',
-      grayscaleUrl: '/logos/client-2-grayscale.png',
-      colorUrl: '/logos/client-2-color.png',
+      logo: '/logos/client-2-color.png',
+      website: 'https://www.digitalsolutions.io',
+      description: 'Enterprise digital transformation',
     },
     {
       id: 3,
       name: 'Future Systems',
-      grayscaleUrl: '/logos/client-3-grayscale.png',
-      colorUrl: '/logos/client-3-color.png',
+      logo: '/logos/client-3-color.png',
+      website: 'https://www.futuresystems.dev',
+      description: 'AI and ML solutions provider',
     },
     {
       id: 4,
       name: 'Cloud Enterprises',
-      grayscaleUrl: '/logos/client-4-grayscale.png',
-      colorUrl: '/logos/client-4-color.png',
+      logo: '/logos/client-4-color.png',
+      website: 'https://www.cloudenterprises.io',
+      description: 'Cloud infrastructure services',
     },
     {
       id: 5,
       name: 'Data Analytics Pro',
-      grayscaleUrl: '/logos/client-5-grayscale.png',
-      colorUrl: '/logos/client-5-color.png',
+      logo: '/logos/client-5-color.png',
+      website: 'https://www.dataanalyticspro.com',
+      description: 'Advanced data insights platform',
     },
     {
       id: 6,
       name: 'Smart Business',
-      grayscaleUrl: '/logos/client-6-grayscale.png',
-      colorUrl: '/logos/client-6-color.png',
+      logo: '/logos/client-6-color.png',
+      website: 'https://www.smartbusiness.ai',
+      description: 'Business intelligence solutions',
     },
   ]
 
@@ -90,36 +97,38 @@ const TrustedBySection = () => {
               className="flex gap-12 whitespace-nowrap"
             >
               {duplicatedClients.map((client, index) => (
-                <motion.div
+                <motion.a
                   key={`${client.id}-${index}`}
-                  className="flex-shrink-0 h-20 w-40 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 group cursor-pointer overflow-hidden relative"
+                  href={client.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 h-24 w-48 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 group cursor-pointer overflow-hidden relative hover:border-red-200"
                   whileHover={{ scale: 1.05 }}
+                  title={`Visit ${client.name} - ${client.description}`}
                 >
-                  {/* Grayscale version */}
-                  <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 transition-opacity duration-300">
-                    <div className="w-32 h-16 relative grayscale opacity-70">
-                      <div className="absolute inset-0 flex items-center justify-center text-center">
-                        <span className="text-sm font-semibold text-gray-400">{client.name}</span>
-                      </div>
-                    </div>
+                  {/* Logo Image with grayscale default */}
+                  <div className="relative w-40 h-20 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100">
+                    <Image
+                      src={client.logo}
+                      alt={client.name}
+                      fill
+                      className="object-contain p-2"
+                      priority={false}
+                    />
                   </div>
 
-                  {/* Color version - appears on hover */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <div className="w-32 h-16 relative">
-                      <div className="absolute inset-0 flex items-center justify-center text-center">
-                        <span className="text-sm font-semibold text-red-600 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
-                          {client.name}
-                        </span>
-                      </div>
-                    </div>
-                  </motion.div>
-                </motion.div>
+                  {/* External link icon - appears on hover */}
+                  <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-red-600 rounded-full p-1.5">
+                    <ExternalLink size={14} className="text-white" />
+                  </div>
+
+                  {/* Tooltip text */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-red-600 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 py-2 px-2 flex items-center justify-center">
+                    <span className="text-xs font-semibold text-white text-center">
+                      Visit Website
+                    </span>
+                  </div>
+                </motion.a>
               ))}
             </motion.div>
           </div>
