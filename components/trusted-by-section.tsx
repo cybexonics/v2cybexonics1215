@@ -93,13 +93,13 @@ const TrustedBySection = () => {
               className="flex gap-12 whitespace-nowrap"
             >
                {duplicatedClients.map((client, index) => (
-  <motion.a
-    key={`${client.id}-${index}`}
-    href={client.website}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex-shrink-0 h-20 w-40 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 group cursor-pointer overflow-hidden"
-    whileHover={{ scale: 1.05 }}
+            <motion.a
+                key={`${client.id}-${index}`}
+                href={client.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 h-20 w-40 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 group cursor-pointer overflow-hidden"
+                whileHover={{ scale: 1.05 }}
   >
     <div className="w-32 h-16 relative">
       <Image
@@ -111,6 +111,8 @@ const TrustedBySection = () => {
     </div>
   </motion.a>
 ))}
+  </motion.div>
+    </div>
 
           {/* Gradient overlays for smooth edges */}
           <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
@@ -145,7 +147,7 @@ const TrustedBySection = () => {
         </motion.div>
       </div>
     </section>
-  )
+    )
 }
 
 export default TrustedBySection
