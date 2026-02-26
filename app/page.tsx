@@ -7,6 +7,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import ServicesGrid from "@/components/services-grid"
 import PricingSection from "@/components/pricing-section"
+import TrustedBySection from "@/components/trusted-by-section"
 import Link from "next/link"
 import { ArrowRight, Users, Award, Zap, Globe, Code, Lightbulb } from "lucide-react"
 
@@ -196,6 +197,9 @@ export default function HomePage() {
       {/* Services Section */}
       <ServicesGrid />
 
+      {/* Trusted By Section */}
+      <TrustedBySection />
+
       {/* Features Section */}
       <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
@@ -213,7 +217,7 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Where your business and startup ideas turn into reality.
+              We combine technical expertise with business understanding to deliver solutions that drive real results.
             </p>
           </motion.div>
 

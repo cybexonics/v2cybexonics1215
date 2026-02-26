@@ -1,18 +1,10 @@
 import { createClient } from "@supabase/supabase-js"
 
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ""
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ""
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-
-// Ensure environment variables are defined
-if (!supabaseUrl) {
-  throw new Error("NEXT_PUBLIC_SUPABASE_URL is required.")
-}
-if (!supabaseAnonKey) {
-  throw new Error("NEXT_PUBLIC_SUPABASE_ANON_KEY is required.")
-}
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// Create client only if environment variables are available
+export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null
 
 // Types for form submissions
 export interface ContactFormData {
@@ -25,29 +17,21 @@ export interface ContactFormData {
   created_at?: string
 }
 
-// Function to submit contact form
 export async function submitContactForm(formData: ContactFormData) {
   try {
-    const { data, error } = await supabase.from("form_submissions").insert([
-      {
-        ...formData,
-        created_at: new Date().toISOString(),
+    const response = await fetch("/api/contact-submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    ])
-
-    if (error) throw error
-
-    // Trigger email notification via Supabase function (for contact forms)
-    // This function needs to be deployed on Supabase
-    await supabase.functions.invoke("send-email-notification", {
-      body: {
-        type: "contact",
-        data: formData,
-        to: "cybexonicsitconsultants@gmail.com",
-      },
+      body: JSON.stringify(formData),
     })
 
-    return { success: true, data }
+    if (!response.ok) {
+      throw new Error("Failed to submit form")
+    }
+
+    return { success: true }
   } catch (error) {
     console.error("Error submitting form:", error)
     return { success: false, error }
