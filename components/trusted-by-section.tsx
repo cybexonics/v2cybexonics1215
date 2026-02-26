@@ -12,7 +12,7 @@ const TrustedBySection = () => {
       id: 1,
       name: 'Sumant Industries',
       website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
-      grayscaleUrl: '/logo/client1.png',
+      grayscaleUrl: '/logos/client1.png',
       colorUrl: '/logos/client-1-color.png',
     },
     {
