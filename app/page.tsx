@@ -1,54 +1,45 @@
-"use client"
+'use client'
 
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import Navigation from "@/components/navigation"
-import Footer from "@/components/footer"
-import ServicesGrid from "@/components/services-grid"
-import PricingSection from "@/components/pricing-section"
-import TrustedBySection from "@/components/trusted-by-section"
-import Link from "next/link"
-import { ArrowRight, Users, Award, Zap, Globe, Code, Lightbulb } from "lucide-react"
+import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import Navigation from '@/components/navigation'
+import Footer from '@/components/footer'
+import Link from 'next/link'
+import { ArrowRight, Code, Zap, Smartphone, Wrench, Check, MessageCircle } from 'lucide-react'
 
 export default function HomePage() {
-  const stats = [
-    { number: "50+", label: "Projects Completed" },
-    { number: "25+", label: "Happy Clients" },
-    { number: "3+", label: "Years Experience" },
-    { number: "24/7", label: "Support Available" },
+  const whyChooseUs = [
+    { icon: Code, title: 'Custom Built Solutions', description: 'No templates, tailored to your needs' },
+    { icon: Zap, title: 'Scalable Architecture', description: 'Built to grow with your business' },
+    { icon: Check, title: 'Clean & Secure Code', description: 'Industry best practices and standards' },
+    { icon: ArrowRight, title: 'Fast Delivery', description: 'Efficient development without compromises' },
+    { icon: Smartphone, title: 'Business-Oriented', description: 'Focus on your business outcomes' },
   ]
 
-  const features = [
+  const services = [
+    { title: 'Custom Website Development', desc: 'Professional sites that convert visitors to clients' },
+    { title: 'Web Applications & SaaS', desc: 'Scalable systems for your business growth' },
+    { title: 'Mobile App Development', desc: 'Native & cross-platform solutions' },
+    { title: 'Maintenance & Optimization', desc: 'Ongoing support and performance improvements' },
+  ]
+
+  const markets = [
     {
-      icon: Code,
-      title: "Custom Development",
-      description: "Tailored solutions built specifically for your business needs and requirements.",
+      name: 'UK Market',
+      pricing: '£500 – £8000',
+      showPricing: true,
+      description: 'Professional services for UK businesses seeking scalable solutions',
     },
     {
-      icon: Zap,
-      title: "Fast Delivery",
-      description: "Quick turnaround times without compromising on quality or functionality.",
+      name: 'Dubai Market',
+      showPricing: false,
+      description: 'Premium solutions for UAE enterprises',
     },
     {
-      icon: Globe,
-      title: "Modern Technology",
-      description: "Using the latest frameworks and technologies for future-proof solutions.",
-    },
-    {
-      icon: Users,
-      title: "Expert Team",
-      description: "Experienced developers and designers dedicated to your project success.",
-    },
-    {
-      icon: Award,
-      title: "Quality Assurance",
-      description: "Rigorous testing and quality checks ensure reliable, bug-free applications.",
-    },
-    {
-      icon: Lightbulb,
-      title: "Innovation Focus",
-      description: "Creative problem-solving and innovative approaches to complex challenges.",
+      name: 'India Market',
+      showPricing: false,
+      description: 'Cost-effective development with global quality',
     },
   ]
 
@@ -56,188 +47,75 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Floating Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            animate={{
-              y: [0, -20, 0],
-              rotate: [0, 5, 0],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-            }}
-            className="absolute top-20 left-10 w-20 h-20 bg-red-100 rounded-2xl opacity-60"
-          />
-          <motion.div
-            animate={{
-              y: [0, 20, 0],
-              rotate: [0, -5, 0],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-            }}
-            className="absolute top-40 right-20 w-16 h-16 bg-blue-100 rounded-full opacity-40"
-          />
-          <motion.div
-            animate={{
-              y: [0, -15, 0],
-              x: [0, 10, 0],
-            }}
-            transition={{
-              duration: 7,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-            }}
-            className="absolute bottom-20 left-1/4 w-12 h-12 bg-green-100 rounded-lg opacity-50"
-          />
-        </div>
-
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            {/* Logo */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-8"
-            >
-              <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-black via-gray-800 to-red-600 bg-clip-text text-transparent">
-                CYBEXONICS
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-600 font-light">IT Consultants</p>
-            </motion.div>
-
-            {/* Main Heading */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-3xl md:text-5xl font-semibold mb-6 leading-tight"
-            >
-              Custom IT Solutions.{" "}
-              <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
-                Real Impact.
-              </span>
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed"
-            >
-              Transforming businesses through innovative technology solutions, custom development, and strategic IT
-              consulting.
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-            >
-              <Link href="/services">
-                <Button
-                  size="lg"
-                  className="bg-red-600 hover:bg-gradient-to-r hover:from-red-600 hover:to-red-700 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg"
-                >
-                  Explore Services
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-
+      {/* HERO SECTION */}
+      <section className="pt-32 pb-24 px-4 md:px-8 bg-white relative overflow-hidden">
+        <div className="max-w-5xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-black">
+              We Build Scalable Websites & Digital Systems for Global Businesses
+            </h1>
+            <p className="text-lg md:text-xl text-gray-700 mb-12 max-w-3xl leading-relaxed">
+              Helping businesses across the UK, Dubai, and India with high-performance custom development. We deliver
+              solutions that drive real results.
+            </p>
+            <div className="flex flex-col md:flex-row gap-4">
+              <Button
+                size="lg"
+                className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 font-semibold"
+              >
+                Get Free Consultation
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg bg-transparent group"
-                onClick={() =>
-                  window.open(
-                    "https://docs.google.com/forms/d/e/1FAIpQLSdM-f8Y0U6v4o_QlRAKmDYnrKIiMweOG28KwgbOhxdSwppX6Q/viewform?usp=header",
-                    "_blank",
-                    "noopener,noreferrer",
-                  )
-                }
+                className="border-2 border-black hover:bg-black hover:text-white text-black px-8 py-3 rounded-lg transition-all duration-300 font-semibold"
               >
-                Join Our Internship
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                View Work
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
+
+        {/* Minimal background element */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-red-600/5 to-transparent rounded-full blur-3xl pointer-events-none" />
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 px-4 bg-white">
+      {/* MARKET FOCUS SECTION */}
+      <section className="py-20 px-4 md:px-8 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-red-600 mb-2">{stat.number}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <ServicesGrid />
-
-      {/* Trusted By Section */}
-      <TrustedBySection />
-
-      {/* Features Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-3xl md:text-4xl font-bold text-center mb-16 text-black"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Why Choose{" "}
-              <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
-                CYBEXONICS?
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We combine technical expertise with business understanding to deliver solutions that drive real results.
-            </p>
-          </motion.div>
+            Global Markets, Local Expertise
+          </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
+          <div className="grid md:grid-cols-3 gap-8">
+            {markets.map((market, idx) => (
               <motion.div
-                key={feature.title}
+                key={market.name}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
               >
-                <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
+                <Card className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
                   <CardContent className="p-8">
-                    <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
-                      <feature.icon className="h-8 w-8 text-white" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                    <h3 className="text-2xl font-bold mb-4 text-black">{market.name}</h3>
+                    {market.showPricing && (
+                      <div className="text-3xl font-bold text-red-600 mb-4">{market.pricing}</div>
+                    )}
+                    <p className="text-gray-600 mb-6">{market.description}</p>
+                    {!market.showPricing && (
+                      <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg">
+                        Get Best Price
+                      </Button>
+                    )}
                   </CardContent>
                 </Card>
               </motion.div>
@@ -246,11 +124,104 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <PricingSection />
+      {/* SERVICES SECTION */}
+      <section className="py-20 px-4 md:px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-center mb-16 text-black"
+          >
+            Our Services
+          </motion.h2>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-red-500 to-red-600 text-white">
+          <div className="grid md:grid-cols-2 gap-8">
+            {services.map((service, idx) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="border-l-4 border-red-600 pl-6 py-4">
+                  <h3 className="text-xl font-bold text-black mb-2">{service.title}</h3>
+                  <p className="text-gray-600">{service.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TRUST SECTION */}
+      <section className="py-20 px-4 md:px-8 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-center mb-12 text-black"
+          >
+            Trusted by Growing Businesses
+          </motion.h2>
+
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                viewport={{ once: true }}
+                className="w-24 h-24 md:w-32 md:h-32 bg-gray-300 rounded-lg flex items-center justify-center"
+              >
+                <span className="text-gray-400 text-sm font-medium">Brand {i}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US SECTION */}
+      <section className="py-20 px-4 md:px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-center mb-16 text-black"
+          >
+            Why Choose CYBEXONICS
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whyChooseUs.map((item, idx) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="p-6 bg-gray-50 rounded-xl border border-gray-200 hover:border-red-600 transition-all duration-300"
+              >
+                <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4">
+                  <item.icon className="text-white" size={24} />
+                </div>
+                <h3 className="text-lg font-bold text-black mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT SECTION */}
+      <section className="py-20 px-4 md:px-8 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -258,17 +229,56 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to Transform Your Business?</h2>
-            <p className="text-xl mb-8 opacity-90">Let's discuss your project and create something amazing together.</p>
-            <Link href="/contact">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black">About CYBEXONICS</h2>
+            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+              We specialize in building scalable digital systems for growing businesses. From custom websites to
+              enterprise SaaS platforms and mobile applications, we deliver solutions that drive measurable business
+              outcomes.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Our focus is on creating technology that solves real problems, scales efficiently, and delivers lasting
+              value.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CONTACT SECTION */}
+      <section className="py-20 px-4 md:px-8 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black">Ready to Get Started?</h2>
+            <p className="text-lg text-gray-700 mb-10">
+              Let's discuss your project requirements and create a scalable solution.
+            </p>
+            <div className="flex flex-col md:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-white text-red-600 hover:bg-gray-100 px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg font-semibold"
+                className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg shadow-lg font-semibold"
               >
-                Get Started Today
+                Schedule Consultation
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-            </Link>
+              <a
+                href="https://wa.me/919604902393"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-3 rounded-lg font-semibold w-full"
+                >
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Chat on WhatsApp
+                </Button>
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
