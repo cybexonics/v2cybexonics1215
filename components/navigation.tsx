@@ -25,6 +25,7 @@ export default function Navigation() {
     { name: "Portfolio", href: "/portfolio" },
     { name: "Pricing", href: "/pricing" },
     { name: "Careers", href: "/careers" },
+    { name: "🇬🇧 UK Services", href: "/uk" },
     { name: "Contact", href: "/contact" },
   ]
 
