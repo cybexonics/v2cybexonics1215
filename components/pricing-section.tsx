@@ -9,7 +9,7 @@ export default function PricingSection() {
   const plans = [
     {
       name: "Basic",
-      price: "₹9,999",
+      price: "£399",
       color: "from-green-500 to-green-600",
       badge: null,
       features: [
@@ -22,14 +22,14 @@ export default function PricingSection() {
     },
     {
       name: "Professional",
-      price: "₹14,999",
+      price: " £799",
       color: "from-red-500 to-red-600",
       badge: "Most Popular",
       features: ["Up to 6 Pages", "Pro Design", "Fully SEO Setup", "Free Domain up to ₹1000", "45 Days Maintenance"],
     },
     {
       name: "Enterprise",
-      price: "₹24,999+",
+      price: "£1,999+",
       color: "from-gray-800 to-black",
       badge: null,
       features: [

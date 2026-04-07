@@ -133,7 +133,7 @@ const TrustedBySection = () => {
           className="mt-12 grid grid-cols-3 gap-6 text-center"
         >
           <div>
-            <div className="text-2xl md:text-3xl font-bold text-red-600">100+</div>
+            <div className="text-2xl md:text-3xl font-bold text-red-600">25+</div>
             <div className="text-gray-600 text-sm md:text-base">Happy Clients</div>
           </div>
           <div>
