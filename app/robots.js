@@ -4,6 +4,6 @@ export default function robots() {
             userAgent: '*',
             allow: '/',
         },
-        sitemap: 'https://cybexonnics.com/sitemap.xml',
+        sitemap: 'https://cybexonics.com/sitemap.xml',
     }
 }
