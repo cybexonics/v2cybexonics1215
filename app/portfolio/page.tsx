@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { ExternalLink, Clock } from "lucide-react"
+import { Resend } from "resend"
 
 export default function PortfolioPage() {
   const projects = [
@@ -78,7 +79,7 @@ export default function PortfolioPage() {
       description:
         "Tailoring software for tracking stitching, finishing, and delivery — custom-built for boutique operations.",
       image: "/images/star-tailor.png",
-      technologies: ["Next.js", "Supabase"],
+      technologies: ["Next.js", "Resend API"],
       liveUrl: "#",
       status: "Coming Soon",
     },
