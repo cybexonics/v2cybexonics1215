@@ -10,9 +10,9 @@ const TrustedBySection = () => {
   const clients = [
     {
       id: 1,
-      name: 'Sumant Industries',
-      website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
-      logo: '/logo/sumant-industries.png',
+      name: 'worldboxShipping Pvt Ltd',
+      website: "https://www.worldboxshipping.com/",
+      logo: '/logo/worldboxshipping.png',
     },
     {
       id: 2,
@@ -28,24 +28,19 @@ const TrustedBySection = () => {
     },
     {
       id: 4,
-      name: 'Cloud Enterprises',
-      website: "https://sumant-indu-git-55fa98-cybexonics-it-consultants-pvt-s-projects.vercel.app/",
-      logo: '/logo/cloud-enterprises.png',
+      name: 'Suzumi Wellness',
+      website: "https://www.suzumiwellness.com/",
+      logo: '/logo/suzumi-wellness.png',
       
     },
     {
       id: 5,
-      name: 'Data Analytics Pro',
-      website: "-",
-      logo: '/logo/data-analytics-pro.png',
+      name: 'Skin world beauty',
+      website: "https://skinworldbeauty.com/",
+      logo: '/logo/skin-world-beauty.png',
       
     },
-    {
-      id: 6,
-      name: 'Smart Business',
-      website: "-",
-      logo: '/logo/smart-business.png',      
-    },
+    
   ]
 
   // Duplicate clients for seamless infinite scroll
@@ -137,7 +132,7 @@ const TrustedBySection = () => {
             <div className="text-gray-600 text-sm md:text-base">Happy Clients</div>
           </div>
           <div>
-            <div className="text-2xl md:text-3xl font-bold text-red-600">500+</div>
+            <div className="text-2xl md:text-3xl font-bold text-red-600">50+</div>
             <div className="text-gray-600 text-sm md:text-base">Projects Delivered</div>
           </div>
           <div>

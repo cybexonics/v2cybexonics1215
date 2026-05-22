@@ -1,19 +1,26 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useState } from "react"
+import PricingModal from "@/components/PricingModal"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Check, Star } from "lucide-react"
 
+type PlanName = "Basic" | "Professional" | "Enterprise"
+
 export default function PricingSection() {
-  const plans = [
+  const [selectedPlan, setSelectedPlan] = useState<PlanName>("Basic")
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const plans: {name: PlanName; price: string; color: string; badge: string | null; features: string[]}[] = [
     {
       name: "Basic",
       price: "£399",
       color: "from-green-500 to-green-600",
       badge: null,
       features: [
-        "3-page Responsive Website",
+        "5-page Responsive Website",
         "Portfolio Website",
         "25 Days Maintenance",
         "Simple Design",
@@ -25,7 +32,11 @@ export default function PricingSection() {
       price: " £799",
       color: "from-red-500 to-red-600",
       badge: "Most Popular",
-      features: ["Up to 6 Pages", "Pro Design", "Fully SEO Setup", "Free Domain up to ₹1000", "45 Days Maintenance"],
+      features: [ "Up to 6 Pages",
+               "Premium UI/UX Design",
+            "Full On-Page SEO Setup",
+            "Google Analytics Integration",
+            "45 Days Free Support"],
     },
     {
       name: "Enterprise",
@@ -34,12 +45,12 @@ export default function PricingSection() {
       badge: null,
       features: [
         "E-Commerce Website",
-        "30+ Pages",
+        "15+ Pages",
         "Advanced SEO",
         "Custom Design",
         "Free Domain",
         "Social Media Integration",
-        "90 Days Maintenance",
+        "60 Days Maintenance",
       ],
     },
   ]
@@ -113,6 +124,10 @@ export default function PricingSection() {
                       ? "bg-red-600 hover:bg-red-700 text-white shadow-lg hover:shadow-xl"
                       : "bg-gray-900 hover:bg-gray-800 text-white"
                   }`}
+                  onClick={() => {
+                    setSelectedPlan(plan.name)
+                    setIsModalOpen(true)
+                  }}
                 >
                   Get Started
                 </Button>
@@ -121,6 +136,12 @@ export default function PricingSection() {
           </motion.div>
         ))}
       </div>
+
+      <PricingModal
+        plan={selectedPlan}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   )
 }

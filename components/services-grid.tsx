@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
-import { Code, Cloud, Brain, Smartphone, Palette, Settings } from "lucide-react"
+import { Code, Cloud, Brain, Smartphone, Palette, Settings, TrendingUp } from "lucide-react"
 
 export default function ServicesGrid() {
   const services = [
@@ -21,11 +21,11 @@ export default function ServicesGrid() {
       features: ["Cloud Architecture", "Multi-tenant", "API Integration", "Analytics"],
     },
     {
-      icon: Brain,
-      title: "AI & Machine Learning",
-      description: "Intelligent solutions powered by artificial intelligence and machine learning",
-      color: "from-purple-500 to-purple-600",
-      features: ["Predictive Analytics", "Natural Language Processing", "Computer Vision", "Automation"],
+  icon: TrendingUp,
+  title: "SEO & Search Visibility",
+  description: "Data-driven SEO strategies that rank your business higher and drive qualified organic traffic",
+  color: "from-green-500 to-green-600",
+  features: ["Technical SEO Audit", "On-Page Optimization", "Schema Markup", "Content Strategy"],
     },
     {
       icon: Smartphone,

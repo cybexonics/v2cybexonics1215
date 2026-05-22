@@ -124,14 +124,25 @@ export default function Footer() {
                   +91 9604902393
                 </a>
               </div>
-              <div className="flex items-center">
-                <Mail className="h-5 w-5 text-red-500 mr-3 flex-shrink-0" />
-                <a
-                  href="mailto:cybexonicsitconsultants@gmail.com"
-                  className="text-gray-300 text-sm hover:text-red-500 transition-colors duration-200 break-all"
-                >
-                  cybexonicsitconsultants@gmail.com
-                </a>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center">
+                  <Mail className="h-5 w-5 text-red-500 mr-3 flex-shrink-0" />
+                  <a
+                    href="mailto:cybexonicsitconsultants@gmail.com"
+                    className="text-gray-300 text-sm hover:text-red-500 transition-colors duration-200 break-all"
+                  >
+                    cybexonicsitconsultants@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center">
+                  <Mail className="h-5 w-5 text-red-500 mr-3 flex-shrink-0" />
+                  <a
+                    href="mailto:aayush@cybexonics.com"
+                    className="text-gray-300 text-sm hover:text-red-500 transition-colors duration-200 break-all"
+                  >
+                    aayush@cybexonics.com
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -145,7 +156,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="border-t border-gray-800 mt-12 pt-8 text-center"
         >
-          <p className="text-gray-400 text-sm">© 2025 CYBEXONICS IT CONSULTANTS PVT.LTD . All rights reserved.</p>
+          <p className="text-gray-400 text-sm">© 2026 CYBEXONICS IT CONSULTANTS PVT.LTD . All rights reserved.</p>
         </motion.div>
       </div>
     </footer>
