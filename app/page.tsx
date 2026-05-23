@@ -10,6 +10,7 @@ import Footer from "@/components/footer"
 import ServicesGrid from "@/components/services-grid"
 import TrustedBySection from "@/components/trusted-by-section"
 import PricingSection from "@/components/pricing-section"
+import SchemaMarkup from "@/components/SchemaMarkup"
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",

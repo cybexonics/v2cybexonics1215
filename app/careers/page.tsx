@@ -11,6 +11,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { Briefcase, User, Mail, Phone, Link, Github, FileText, MessageSquare, CheckCircle, Send } from 'lucide-react'
+import SchemaMarkup from "@/components/SchemaMarkup"
 
 export default function CareersPage() {
   const [formData, setFormData] = useState({
