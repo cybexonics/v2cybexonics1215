@@ -25,3 +25,10 @@ export const metadata = {
     // ☝️ you're missing images — WhatsApp/LinkedIn won't show preview without this
   },
 }
+export default function AboutLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <>{children}</>;
+}
