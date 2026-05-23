@@ -1,12 +1,14 @@
 "use client"
 
+import type { ComponentType } from "react"
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { ExternalLink, Clock } from "lucide-react"
-import { Resend } from "resend"
+
+
 
 export default function PortfolioPage() {
   const projects = [
@@ -89,7 +91,7 @@ export default function PortfolioPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
+      <NavigationComponent />
 
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 bg-gradient-to-br from-gray-50 to-white">
@@ -201,7 +203,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <Footer />
+      <FooterComponent />
     </div>
   )
 }

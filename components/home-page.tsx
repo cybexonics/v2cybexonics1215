@@ -1,13 +1,17 @@
-import type { Metadata } from "next"
-import HomePageContent from "@/components/home-page"
+"use client"
 
-export const metadata: Metadata = {
-  title: "Web Development Company in Pune, Baramati | Cybexonics IT Consultants",
-  description:
-    "Custom websites, mobile apps & SaaS platforms built for Indian & UK businesses. Trusted IT consultants in Baramati, Pune. Get a free quote today.",
-}
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import Navigation from "@/components/navigation"
+import Footer from "@/components/footer"
+import ServicesGrid from "@/components/services-grid"
+import PricingSection from "@/components/pricing-section"
+import TrustedBySection from "@/components/trusted-by-section"
+import Link from "next/link"
+import { ArrowRight, Users, Award, Zap, Globe, Code, Lightbulb } from "lucide-react"
 
-export default function HomePage() {
+export default function HomePageContent() {
   const stats = [
     { number: "50+", label: "Projects Completed" },
     { number: "25+", label: "Happy Clients" },
@@ -116,10 +120,7 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-3xl md:text-5xl font-semibold mb-6 leading-tight"
             >
-              Custom IT Solutions.{" "}
-              <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
-                Real Impact.
-              </span>
+              Custom IT Solutions. <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">Real Impact.</span>
             </motion.h2>
 
             <motion.p
@@ -207,10 +208,7 @@ export default function HomePage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Why Choose{" "}
-              <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
-                CYBEXONICS?
-              </span>
+              Why Choose <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">CYBEXONICS?</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               We combine technical expertise with business understanding to deliver solutions that drive real results.

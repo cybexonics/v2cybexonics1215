@@ -6,6 +6,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { Target, Users, Sparkles, Heart } from "lucide-react"
 
+
 export default function AboutPage() {
   const values = [
     {

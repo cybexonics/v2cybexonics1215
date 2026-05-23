@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { MapPin, Phone, Mail, Instagram, Linkedin } from "lucide-react"
+import { MapPin, Phone, Mail, Instagram, LinkedinIcon } from "lucide-react"
 import Link from "next/link"
 
 export default function Footer() {
@@ -51,7 +51,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="border border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded-full p-3 bg-transparent transition-colors duration-200 inline-flex items-center justify-center"
               >
-                <Linkedin className="h-5 w-5" />
+                <LinkedinIcon className="h-5 w-5" />
               </a>
             </div>
           </motion.div>

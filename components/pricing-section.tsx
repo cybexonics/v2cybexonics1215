@@ -16,7 +16,7 @@ export default function PricingSection() {
   const plans: {name: PlanName; price: string; color: string; badge: string | null; features: string[]}[] = [
     {
       name: "Basic",
-      price: "£399",
+      price: "",
       color: "from-green-500 to-green-600",
       badge: null,
       features: [
@@ -29,7 +29,7 @@ export default function PricingSection() {
     },
     {
       name: "Professional",
-      price: " £799",
+      price: "",
       color: "from-red-500 to-red-600",
       badge: "Most Popular",
       features: [ "Up to 6 Pages",
@@ -40,7 +40,7 @@ export default function PricingSection() {
     },
     {
       name: "Enterprise",
-      price: "£1,999+",
+      price: "",
       color: "from-gray-800 to-black",
       badge: null,
       features: [

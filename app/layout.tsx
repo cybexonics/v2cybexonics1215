@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
+export const metadataBase = new URL("https://cybexonics.com")
 export const metadata: Metadata = {
   title: "CYBEXONICS - Custom IT Solutions. Real Impact.",
   description:
@@ -90,7 +91,11 @@ export const metadata: Metadata = {
     "theme-color": "#ffffff",
     "color-scheme": "light dark",
   },
-    generator: 'v0.dev'
+  viewport: "width=device-width, initial-scale=1",
+  alternates: {
+    canonical: "https://cybexonics.com",
+  },
+  
 }
 
 export default function RootLayout({
@@ -101,6 +106,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta charSet="UTF-8" />
+
+  <title>
+   Web Development Company in Pune, Baramati | Cybexonics IT Consultants Pvt. Ltd.
+  </title>
+
+  <meta
+    name="description"
+    content="Custom websites, mobile apps & SaaS platforms built for Indian & UK businesses. Trusted IT consultants in Baramati, Pune. Get a free quote today."
+  />
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
       </head>
