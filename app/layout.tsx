@@ -3,27 +3,68 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import SchemaMarkup from "@/components/SchemaMarkup"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadataBase = new URL("https://cybexonics.com")
-export const metadata: Metadata = {
-  title: "CYBEXONICS - Custom IT Solutions. Real Impact.",
-  description:
-    "Transforming businesses through innovative technology solutions, custom development, and strategic IT consulting. Specializing in website development, mobile apps, SaaS platforms, and AI solutions.",
-  keywords: [
-    "IT consulting",
-    "web development",
-    "mobile apps",
-    "SaaS",
-    "AI solutions",
-    "custom software",
-    "Baramati",
-    "Maharashtra",
+// ── Schemas — declared ONCE ───────────────────────
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Cybexonics",
+  url: "https://www.cybexonics.com",
+  logo: "https://www.cybexonics.com/logo.png",
+  email: "info@cybexonics.com",
+  telephone: "+919604902393",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Baramati",
+    addressLocality: "Baramati",
+    addressRegion: "Maharashtra",
+    postalCode: "413102",
+    addressCountry: "IN",
+  },
+  sameAs: [
+    "https://www.linkedin.com/company/cybexonics",
+    "https://twitter.com/cybexonics",
+    "https://github.com/cybexonics",
   ],
-  authors: [{ name: "CYBEXONICS IT Consultants" }],
-  creator: "CYBEXONICS IT Consultants",
-  publisher: "CYBEXONICS IT Consultants",
+}
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Cybexonics",
+  url: "https://www.cybexonics.com",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://www.cybexonics.com/search?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
+}
+
+// ── Metadata — ONE export only ────────────────────
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.cybexonics.com"),
+  title: {
+    default: "Cybexonics — IT Consultants Baramati, Pune",
+    template: "%s | Cybexonics",
+  },
+  description: "Custom websites, mobile apps & SaaS platforms for Indian & UK businesses. Trusted IT consultants in Baramati, Pune.",
+  keywords: [
+    "web development Baramati",
+    "IT company Pune",
+    "web development Pune",
+    "IT consultants Maharashtra",
+    "mobile app development Pune",
+    "SaaS development India",
+    "SEO services Pune",
+  ],
+  authors: [{ name: "Cybexonics IT Consultants" }],
+  creator: "Cybexonics IT Consultants",
   robots: {
     index: true,
     follow: true,
@@ -41,63 +82,42 @@ export const metadata: Metadata = {
       { url: "/cybexonics-favicon.png", sizes: "16x16", type: "image/png" },
     ],
     apple: [{ url: "/cybexonics-favicon.png", sizes: "180x180", type: "image/png" }],
-    other: [
-      {
-        rel: "icon",
-        url: "/cybexonics-favicon.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        rel: "icon",
-        url: "/cybexonics-favicon.png",
-        sizes: "512x512",
-        type: "image/png",
-      },
-    ],
   },
   manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://cybexonics.com",
-    siteName: "CYBEXONICS",
-    title: "CYBEXONICS - Custom IT Solutions. Real Impact.",
-    description:
-      "Transforming businesses through innovative technology solutions, custom development, and strategic IT consulting.",
+    locale: "en_IN",
+    url: "https://www.cybexonics.com",
+    siteName: "Cybexonics",
     images: [
       {
-        url: "/cybexonics-favicon.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "CYBEXONICS IT Consultants",
+        alt: "Cybexonics — IT Consultants Baramati Pune",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CYBEXONICS - Custom IT Solutions. Real Impact.",
-    description:
-      "Transforming businesses through innovative technology solutions, custom development, and strategic IT consulting.",
-    images: ["/cybexonics-favicon.png"],
+    site: "@cybexonics",
     creator: "@cybexonics",
+    images: ["/og-image.jpg"],
   },
   verification: {
     google: "your-google-verification-code-here",
   },
-  other: {
-    "msapplication-TileColor": "#dc2626",
-    "msapplication-TileImage": "/cybexonics-favicon.png",
-    "theme-color": "#ffffff",
-    "color-scheme": "light dark",
-  },
-  viewport: "width=device-width, initial-scale=1",
   alternates: {
-    canonical: "https://cybexonics.com",
+    canonical: "https://www.cybexonics.com",
   },
-  
 }
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+}
+
+// ── Layout ────────────────────────────────────────
 export default function RootLayout({
   children,
 }: {
@@ -105,22 +125,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta charSet="UTF-8" />
-
-  <title>
-   Web Development Company in Pune, Baramati | Cybexonics IT Consultants Pvt. Ltd.
-  </title>
-
-  <meta
-    name="description"
-    content="Custom websites, mobile apps & SaaS platforms built for Indian & UK businesses. Trusted IT consultants in Baramati, Pune. Get a free quote today."
-  />
-        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
-      </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        <SchemaMarkup schema={[organizationSchema, websiteSchema]} />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
         </ThemeProvider>
       </body>

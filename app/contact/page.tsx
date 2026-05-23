@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react'
+import SchemaMarkup from "@/components/SchemaMarkup"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -63,6 +64,7 @@ export default function ContactPage() {
 
     return (
       <div className="min-h-screen bg-white">
+        <SchemaMarkup schema={[{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.cybexonics.com" }, { "@type": "ListItem", position: 2, name: "Contact", item: "https://www.cybexonics.com/contact" }] }]} />
         <Navigation />
 
         {/* Hero Section */}

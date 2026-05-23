@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { Target, Users, Sparkles, Heart } from "lucide-react"
+import SchemaMarkup from "@/components/SchemaMarkup"
 
 
 export default function AboutPage() {
@@ -42,6 +43,7 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-white">
+       <SchemaMarkup schema={[{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.cybexonics.com" }, { "@type": "ListItem", position: 2, name: "About", item: "https://www.cybexonics.com/about" }] }]} />
       <Navigation />
 
       {/* Hero Section */}

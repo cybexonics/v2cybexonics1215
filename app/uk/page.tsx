@@ -11,6 +11,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { CheckCircle, Clock, Shield, Users, ArrowRight } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import SchemaMarkup from "@/components/SchemaMarkup"
 
 export default function UKPage() {
   const [formData, setFormData] = useState({
@@ -81,6 +82,7 @@ export default function UKPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <SchemaMarkup schema={[{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.cybexonics.com" }, { "@type": "ListItem", position: 2, name: "UK Services", item: "https://www.cybexonics.com/uk" }] }]} />
       <Navigation />
 
       {/* Hero Section */}

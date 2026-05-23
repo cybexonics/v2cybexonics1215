@@ -1,12 +1,91 @@
-import type { Metadata } from "next"
-import HomePageContent from "@/components/home-page"
+"use client"
 
-export const metadata: Metadata = {
-  title: "Web Development Company in Pune, Baramati | Cybexonics IT Consultants",
-  description:
-    "Custom websites, mobile apps & SaaS platforms built for Indian & UK businesses. Trusted IT consultants in Baramati, Pune. Get a free quote today.",
+import Link from "next/link"
+import { motion } from "framer-motion"
+import { Code, Zap, Globe, Users, Award, Lightbulb, ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import Navigation from "@/components/navigation"
+import Footer from "@/components/footer"
+import ServicesGrid from "@/components/services-grid"
+import TrustedBySection from "@/components/trusted-by-section"
+import PricingSection from "@/components/pricing-section"
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Cybexonics IT Consultants",
+  telephone: "+919604902393",
+  email: "info@cybexonics.com",
+  url: "https://www.cybexonics.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Baramati",
+    addressRegion: "Maharashtra",
+    postalCode: "413102",
+    addressCountry: "IN",
+  },
+  areaServed: ["Baramati", "Pune", "Maharashtra", "United Kingdom"],
+  serviceType: [
+    "Web Development",
+    "Mobile App Development",
+    "SaaS Development",
+    "SEO Services",
+    "UI/UX Design",
+    "AI & Machine Learning",
+  ],
 }
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How much does a website cost in Pune?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Website development in Pune starts from ₹25,000. Contact Cybexonics for a free custom quote tailored to your exact requirements.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you build websites in Baramati?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, Cybexonics is based in Baramati and serves clients across Pune, Maharashtra, all of India and the UK.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long does it take to build a website?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A standard business website takes 2–4 weeks. Complex web applications and SaaS platforms take 6–12 weeks depending on features.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you provide SEO services in Pune?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, Cybexonics offers full SEO services including technical SEO, on-page optimization, schema markup and local SEO for businesses in Pune, Baramati and across Maharashtra.",
+      },
+    },
+  ],
+}
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.cybexonics.com",
+    },
+  ],
+}
 export default function HomePage() {
   const stats = [
     { number: "50+", label: "Projects Completed" },
@@ -51,6 +130,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
+      <SchemaMarkup schema={[localBusinessSchema, faqSchema, breadcrumbSchema]} />
 
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">

@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { ArrowRight, Globe, Smartphone, Code2, LayoutGrid, ShieldCheck, Sparkles, Users, CheckCircle2, MessageSquare, CalendarDays } from "lucide-react"
+import SchemaMarkup from "@/components/SchemaMarkup"
 
 const whyCards = [
   {
@@ -189,6 +190,7 @@ export default function IndiaPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
+      <SchemaMarkup schema={[{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.cybexonics.com" }, { "@type": "ListItem", position: 2, name: "India Services", item: "https://www.cybexonics.com/india" }] }]} />
       <Navigation />
 
       <section className="relative overflow-hidden pt-24 pb-20 sm:pt-28 sm:pb-24">

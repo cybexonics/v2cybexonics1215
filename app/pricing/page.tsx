@@ -4,10 +4,12 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import PricingSection from "@/components/pricing-section"
 import { motion } from "framer-motion"
+import SchemaMarkup from "@/components/SchemaMarkup"
 
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-white">
+      <SchemaMarkup schema={[{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.cybexonics.com" }, { "@type": "ListItem", position: 2, name: "UK Pricing", item: "https://www.cybexonics.com/pricing" }] }]} />
       <Navigation />
 
       {/* Hero Section */}

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { ExternalLink, Clock } from "lucide-react"
+import SchemaMarkup from "@/components/SchemaMarkup"
 
 
 
@@ -91,7 +92,8 @@ export default function PortfolioPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <NavigationComponent />
+      <SchemaMarkup schema={[{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.cybexonics.com" }, { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://www.cybexonics.com/portfolio" }] }]} />
+      <Navigation />
 
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 bg-gradient-to-br from-gray-50 to-white">
@@ -203,7 +205,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <FooterComponent />
+      <Footer />
     </div>
   )
 }
