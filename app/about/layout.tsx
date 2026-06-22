@@ -7,7 +7,7 @@ export const metadata = {
   description: "Meet the Cybexonics team — passionate IT consultants from Baramati delivering world-class web development, AI & SaaS solutions across India and the UK.",
   
   openGraph: {
-    title: "About Us — IT Consultants in Baramati, Pune | Cybexonics",
+    title: "About Us — IT Consultants in Pune | Cybexonics",
     // OG title can be slightly longer, full brand name here is fine ✓
     description: "Meet the Cybexonics team — passionate IT consultants from Baramati delivering world-class web development, AI & SaaS solutions across India and the UK.",
     url: "https://www.cybexonics.com/about",
