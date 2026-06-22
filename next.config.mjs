@@ -9,18 +9,6 @@ const nextConfig = {
     images: {
         unoptimized: true,
     },
-
-    async redirects() {
-        return [
-            // Only this one — www → apex
-            {
-                source: '/:path*',
-                has: [{ type: 'host', value: 'www.cybexonics.com' }],
-                destination: 'https://cybexonics.com/:path*',
-                permanent: true,
-            },
-        ]
-    },
 }
 
 export default nextConfig
