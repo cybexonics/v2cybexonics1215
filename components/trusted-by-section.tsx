@@ -24,7 +24,7 @@ const TrustedBySection = () => {
       id: 3,
       name: 'Darshan-uniforms',
       website: "https://www.darshan-uniform.com/",
-      logo: '/logo/darshan-uniforms.png',
+      logo: '/logo/Darshan-uniforms.png',
     },
     {
       id: 4,
