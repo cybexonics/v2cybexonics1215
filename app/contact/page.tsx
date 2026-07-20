@@ -60,7 +60,7 @@ export default function ContactPage() {
       setSubmitStatus("error")
     } finally {
       setIsSubmitting(false)
-    }
+    }}
 
     return (
       <div className="min-h-screen bg-white">
@@ -301,4 +301,5 @@ export default function ContactPage() {
         <Footer />
       </div>
     )
-  }}
+  
+}

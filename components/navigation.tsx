@@ -26,8 +26,8 @@ export default function Navigation() {
     { name: "Portfolio", href: "/portfolio" },
     { name: "Pricing", href: "/pricing" },
     { name: "Careers", href: "/careers" },
-    { name: "�🇳 India Services", href: "/india" },
-    { name: "�🇬🇧 UK Services", href: "/uk" },
+    { name: "India Services", href: "/india" },
+    { name: "UK Services", href: "/uk" },
     { name: "Contact", href: "/contact" },
   ]
 
@@ -42,7 +42,14 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-lg flex items-center justify-center overflow-hidden">
+              <img
+                src="/images/logo-placeholder.png"
+                alt="Logo placeholder"
+                className="h-8 w-8 object-contain"
+              />
+            </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
               CYBEXONICS
             </span>
