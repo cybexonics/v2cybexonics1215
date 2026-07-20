@@ -101,7 +101,7 @@ const TrustedBySection = () => {
         src={client.logo}
         alt={client.name}
         fill
-        className="object-contain grayscale group-hover:grayscale-0 transition duration-300"
+        className="object-contain  transition duration-300"
       />
     </div>
   </motion.a>

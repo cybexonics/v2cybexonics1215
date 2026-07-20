@@ -271,11 +271,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Trusted By Section */}
+      <TrustedBySection />
+
       {/* Services Section */}
       <ServicesGrid />
 
-      {/* Trusted By Section */}
-      <TrustedBySection />
+      
 
       {/* Features Section */}
       <section className="py-20 px-4 bg-gray-50">
