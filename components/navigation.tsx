@@ -68,12 +68,18 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Get Quote Button */}
-          <div className="hidden md:block">
-            <Button className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
-              Get a Quote
-            </Button>
-          </div>
+      {/* Get Quote Button */}
+<div className="hidden md:block">
+  <a
+    href="https://wa.me/919604902393?text=Hi%20Cybexonics%2C%20I%27d%20like%20to%20get%20a%20quote%20for%20a%20website%2FIT%20project."
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Button className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+      Get a Quote
+    </Button>
+  </a>
+</div>
 
           {/* Mobile Menu Button */}
           <button className="md:hidden p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
