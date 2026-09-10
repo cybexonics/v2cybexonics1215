@@ -7,9 +7,15 @@ import Link from "next/link"
 export default function Footer() {
   const quickLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
+    { name: "About Us", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/portfolio" },
+    { name: "Pricing", href: "/pricing" },
+    { name: "Blog", href: "/blog" },
+    { name: "Careers", href: "/careers" },
+    { name: "Contact", href: "/contact" },
+    { name: "India Office", href: "/india" },
+    { name: "UK Office", href: "/uk" },
   ]
 
   const services = [
