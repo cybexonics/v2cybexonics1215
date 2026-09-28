@@ -1,6 +1,7 @@
 "use client"
 
-import type { ComponentType } from "react"
+import { useState } from "react"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -9,10 +10,20 @@ import Footer from "@/components/footer"
 import { ExternalLink, Clock } from "lucide-react"
 import SchemaMarkup from "@/components/SchemaMarkup"
 
-
-
 export default function PortfolioPage() {
+  const [selectedCategory, setSelectedCategory] = useState("All")
+
   const projects = [
+    {
+      title: "Worldbox Shipping Pvt. Ltd.",
+      category: "Logistics / SEO Retainer",
+      description:
+        "Ongoing SEO retainer and digital logistics growth strategy for international container shipping and freight forwarding, enhancing organic search reach and global shipment leads.",
+      image: "/images/worldbox-hero.png",
+      technologies: ["Logistics SEO", "Keyword Strategy", "Technical SEO", "Performance", "Analytics"],
+      liveUrl: "https://www.worldboxshipping.com/",
+      status: "Live",
+    },
     {
       title: "E-Commerce Platform",
       category: "Web Development",
@@ -88,7 +99,12 @@ export default function PortfolioPage() {
     },
   ]
 
-  const categories = ["All", "Web Development", "SaaS Solution", "Mobile Development", "AI & ML", "Custom Software"]
+  const categories = ["All", "Logistics / SEO", "Web Development", "SaaS Solution", "Mobile Development", "AI & ML", "Custom Software"]
+
+  const filteredProjects =
+    selectedCategory === "All"
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory)
 
   return (
     <div className="min-h-screen bg-white">
@@ -125,9 +141,10 @@ export default function PortfolioPage() {
             {categories.map((category) => (
               <Button
                 key={category}
-                variant={category === "All" ? "default" : "outline"}
+                onClick={() => setSelectedCategory(category)}
+                variant={category === selectedCategory ? "default" : "outline"}
                 className={`px-6 py-2 rounded-full transition-all duration-300 ${
-                  category === "All"
+                  category === selectedCategory
                     ? "bg-red-600 hover:bg-red-700 text-white"
                     : "border-gray-300 text-gray-700 hover:border-red-500 hover:text-red-500"
                 }`}
@@ -139,24 +156,25 @@ export default function PortfolioPage() {
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                whileHover={{ y: -8 }}
                 className="group"
               >
-                <Card className="h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
-                  <div className="relative overflow-hidden">
-                    <img
+                <Card className="h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col">
+                  <div className="relative h-48 w-full overflow-hidden bg-gray-900">
+                    <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center z-10">
                       {project.status === "Live" && project.liveUrl !== "#" ? (
                         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <Button
@@ -177,20 +195,22 @@ export default function PortfolioPage() {
                       )}
                     </div>
                     {project.status === "Coming Soon" && (
-                      <div className="absolute top-4 right-4">
+                      <div className="absolute top-4 right-4 z-10">
                         <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-medium">
                           Coming Soon
                         </span>
                       </div>
                     )}
                   </div>
-                  <CardContent className="p-6">
-                    <div className="mb-2">
-                      <span className="text-sm text-red-500 font-medium">{project.category}</span>
+                  <CardContent className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="mb-2">
+                        <span className="text-sm text-red-500 font-medium">{project.category}</span>
+                      </div>
+                      <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed">{project.description}</p>
                     </div>
-                    <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 pt-2">
                       {project.technologies.map((tech) => (
                         <span key={tech} className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
                           {tech}

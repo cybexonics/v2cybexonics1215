@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useRef } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Code, Zap, Globe, Users, Award, Lightbulb, ArrowRight } from "lucide-react"
@@ -11,6 +12,8 @@ import ServicesGrid from "@/components/services-grid"
 import TrustedBySection from "@/components/trusted-by-section"
 import PricingSection from "@/components/pricing-section"
 import SchemaMarkup from "@/components/SchemaMarkup"
+import Hero3DBackground from "@/components/hero-3d-background"
+import StatCounter from "@/components/stat-counter"
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -88,6 +91,31 @@ const breadcrumbSchema = {
   ],
 }
 export default function HomePage() {
+  const [spotlightPos, setSpotlightPos] = useState({ x: 0, y: 0 })
+  const [isBtnHovered, setIsBtnHovered] = useState(false)
+  const btnRef = useRef<HTMLAnchorElement>(null)
+
+  const handleBtnMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!btnRef.current) return
+    const rect = btnRef.current.getBoundingClientRect()
+    setSpotlightPos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    })
+  }
+
+  // Staggered reveal configuration:
+  // 80ms stagger between lines, cubic-bezier ease [0.16, 1, 0.3, 1], opacity 0->1 + translateY 20px->0
+  const lineReveal = (index: number) => ({
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: {
+      duration: 0.7,
+      delay: index * 0.08,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  })
+
   const stats = [
     { number: "50+", label: "Projects Completed" },
     { number: "25+", label: "Happy Clients" },
@@ -135,7 +163,10 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Floating Elements */}
+        {/* Abstract 3D Depth Layer (Three.js Particle/Node Network & Low-Poly Wireframe) */}
+        <Hero3DBackground />
+
+        {/* Floating Subtle Ambient Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{
@@ -147,7 +178,7 @@ export default function HomePage() {
               repeat: Number.POSITIVE_INFINITY,
               ease: "easeInOut",
             }}
-            className="absolute top-20 left-10 w-20 h-20 bg-red-100 rounded-2xl opacity-60"
+            className="absolute top-20 left-10 w-20 h-20 bg-red-100 rounded-2xl opacity-50"
           />
           <motion.div
             animate={{
@@ -159,7 +190,7 @@ export default function HomePage() {
               repeat: Number.POSITIVE_INFINITY,
               ease: "easeInOut",
             }}
-            className="absolute top-40 right-20 w-16 h-16 bg-blue-100 rounded-full opacity-40"
+            className="absolute top-40 right-20 w-16 h-16 bg-blue-100 rounded-full opacity-35"
           />
           <motion.div
             animate={{
@@ -171,63 +202,74 @@ export default function HomePage() {
               repeat: Number.POSITIVE_INFINITY,
               ease: "easeInOut",
             }}
-            className="absolute bottom-20 left-1/4 w-12 h-12 bg-green-100 rounded-lg opacity-50"
+            className="absolute bottom-20 left-1/4 w-12 h-12 bg-green-100 rounded-lg opacity-40"
           />
         </div>
 
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            {/* Logo */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-8"
-            >
-              <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-black via-gray-800 to-red-600 bg-clip-text text-transparent">
+          <div>
+            {/* Logo and Headline - Staggered Line 0 & 1 */}
+            <div className="mb-8">
+              <motion.h1
+                {...lineReveal(0)}
+                className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-black via-gray-800 to-red-600 bg-clip-text text-transparent tracking-tight"
+              >
                 CYBEXONICS
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-600 font-light">IT Consultants</p>
-            </motion.div>
+              </motion.h1>
+              <motion.p
+                {...lineReveal(1)}
+                className="text-xl md:text-2xl text-gray-600 font-light"
+              >
+                IT Consultants
+              </motion.p>
+            </div>
 
-            {/* Main Heading */}
+            {/* Main Heading - Staggered Line 2 with 8s Animated Gradient Text */}
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-3xl md:text-5xl font-semibold mb-6 leading-tight"
+              {...lineReveal(2)}
+              className="text-3xl md:text-5xl font-semibold mb-6 leading-tight text-neutral-900"
             >
               Custom IT Solutions.{" "}
-              <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+              <span className="animate-gradient-text font-bold">
                 Real Impact.
               </span>
             </motion.h2>
 
+            {/* Subheading - Staggered Line 3 */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              {...lineReveal(3)}
               className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed"
             >
               Transforming businesses through innovative technology solutions, custom development, and strategic IT
               consulting.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Staggered Line 4 with Radial Spotlight Micro-interaction */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              {...lineReveal(4)}
               className="flex flex-col sm:flex-row gap-6 justify-center items-center"
             >
-              <Link href="/services">
-                <Button
-                  size="lg"
-                  className="bg-red-600 hover:bg-gradient-to-r hover:from-red-600 hover:to-red-700 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg"
-                >
+              <Link
+                href="/services"
+                ref={btnRef}
+                onMouseEnter={() => setIsBtnHovered(true)}
+                onMouseLeave={() => setIsBtnHovered(false)}
+                onMouseMove={handleBtnMouseMove}
+                className="relative inline-flex items-center justify-center overflow-hidden bg-red-600 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg font-medium group"
+              >
+                {/* Radial Spotlight Glow Effect Following Cursor */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 transition-opacity duration-200"
+                  style={{
+                    opacity: isBtnHovered ? 1 : 0,
+                    background: `radial-gradient(130px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(255, 255, 255, 0.42), transparent 70%)`,
+                  }}
+                />
+                <span className="relative z-10 flex items-center">
                   Explore Services
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
               </Link>
 
               <Button
@@ -246,26 +288,20 @@ export default function HomePage() {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section with Count-Up Animations */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
+            {stats.map((stat) => (
+              <StatCounter
                 key={stat.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-red-600 mb-2">{stat.number}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </motion.div>
+                number={stat.number}
+                label={stat.label}
+              />
             ))}
           </div>
         </div>

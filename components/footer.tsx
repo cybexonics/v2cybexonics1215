@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { MapPin, Phone, Mail, Instagram, LinkedinIcon } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Footer() {
   const quickLinks = [
@@ -36,9 +37,28 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-black via-gray-800 to-red-600 bg-clip-text text-transparent">
-              CYBEXONICS IT CONSULTANTS
-            </h3>
+            <div className="flex items-start gap-3 mb-4">
+              <div className="relative w-9 h-9 flex items-center justify-center shrink-0 mt-0.5">
+                <Image
+                  src="/images/logo_1080.png"
+                  alt="CYBEXONICS Logo"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold tracking-tight text-white leading-tight">
+                  CYBEXONICS
+                </h3>
+                <p className="text-sm font-semibold tracking-wide text-red-500 mt-0.5">
+                  IT CONSULTANTS{" "}
+                  <span className="text-xs font-normal text-gray-400 tracking-normal">
+                    Pvt. Ltd.
+                  </span>
+                </p>
+              </div>
+            </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Transforming businesses through innovative technology solutions and strategic IT consulting.
             </p>
