@@ -6,6 +6,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import SchemaMarkup from "@/components/SchemaMarkup"
+import BlogShareBar from "@/components/BlogShareBar"
 
 type Props = {
   params: { slug: string }
@@ -15,18 +16,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(params.slug)
   if (!post) return {}
 
+  const title = post.meta_title || post.title
+  const description = post.meta_description || post.description
+
   return {
-    title: post.title,
-    description: post.description,
+    title,
+    description,
     alternates: {
       canonical: `https://www.cybexonics.com/blog/${post.slug}`,
     },
     openGraph: {
-      title: post.title,
-      description: post.description,
+      title,
+      description,
       url: `https://www.cybexonics.com/blog/${post.slug}`,
       type: "article",
       publishedTime: post.date,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
     },
   }
 }
@@ -46,11 +55,11 @@ export default function BlogPostPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
-    description: post.description,
+    description: post.meta_description || post.description,
     datePublished: post.date,
     author: {
       "@type": "Organization",
-      name: "Cybexonics",
+      name: post.author || "Cybexonics",
     },
     publisher: {
       "@type": "Organization",
@@ -69,9 +78,43 @@ export default function BlogPostPage({ params }: Props) {
     ],
   }
 
+  // Extract FAQs if present in content for Google FAQ Rich Snippets
+  const faqList: { question: string; answer: string }[] = []
+  const faqSection = post.content.split(/##\s+Frequently Asked Questions/i)[1]
+  if (faqSection) {
+    const nextH2 = faqSection.split(/\n##\s+/)[0]
+    const qaRegex = /###\s+([^\n]+)\n+([\s\S]*?)(?=(?:\n###\s+)|$)/g
+    let match
+    while ((match = qaRegex.exec(nextH2)) !== null) {
+      const q = match[1].trim()
+      const a = match[2].trim().replace(/\n+/g, " ")
+      if (q && a) {
+        faqList.push({ question: q, answer: a })
+      }
+    }
+  }
+
+  const faqSchema =
+    faqList.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqList.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
+        }
+      : null
+
+  const pageSchemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])]
+
   return (
     <div className="min-h-screen bg-white">
-      <SchemaMarkup schema={[articleSchema, breadcrumbSchema]} />
+      <SchemaMarkup schema={pageSchemas} />
       <Navigation />
 
       {/* Hero */}
@@ -105,10 +148,20 @@ export default function BlogPostPage({ params }: Props) {
           </h1>
 
           {/* Meta */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 pb-8 border-b border-gray-100">
-            <span>✍️ {post.author}</span>
-            <span>📅 {new Date(post.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}</span>
-            <span>⏱ {post.readTime}</span>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-sm text-gray-500 pb-6 border-b border-gray-100">
+            <div className="flex flex-wrap items-center gap-4">
+              <span>✍️ {post.author}</span>
+              <span>📅 {new Date(post.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}</span>
+              <span>⏱ {post.readTime}</span>
+            </div>
+
+            {/* Quick Share at top */}
+            <BlogShareBar
+              slug={post.slug}
+              title={post.title}
+              description={post.description}
+              variant="inline"
+            />
           </div>
         </div>
       </section>
@@ -132,6 +185,14 @@ export default function BlogPostPage({ params }: Props) {
           ">
             <MDXRemote source={post.content} />
           </div>
+
+          {/* Dedicated Rich Quick Share Bar at bottom of article */}
+          <BlogShareBar
+            slug={post.slug}
+            title={post.title}
+            description={post.description}
+            variant="bottom"
+          />
         </div>
       </section>
 
@@ -186,6 +247,14 @@ export default function BlogPostPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Floating quick-share button accessible throughout reading */}
+      <BlogShareBar
+        slug={post.slug}
+        title={post.title}
+        description={post.description}
+        variant="floating"
+      />
 
       <Footer />
     </div>

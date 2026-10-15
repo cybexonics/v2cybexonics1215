@@ -13,6 +13,10 @@ export type Post = {
   author: string
   readTime: string
   content: string
+  meta_title?: string
+  meta_description?: string
+  category?: string
+  cover_image_alt?: string
 }
 
 export function getAllPosts(): Post[] {
@@ -34,11 +38,15 @@ export function getAllPosts(): Post[] {
       return {
         slug,
         title: data.title || "",
-        description: data.description || "",
-        date: data.date || "",
+        description: data.description || data.meta_description || "",
+        date: data.date || "2026-10-15",
         tags: data.tags || [],
         author: data.author || "Cybexonics Team",
         readTime: data.readTime || "5 min read",
+        meta_title: data.meta_title || data.title || "",
+        meta_description: data.meta_description || data.description || "",
+        category: data.category || "SEO",
+        cover_image_alt: data.cover_image_alt || "",
         content,
       }
     })
@@ -58,11 +66,15 @@ export function getPostBySlug(slug: string): Post | null {
     return {
       slug,
       title: data.title || "",
-      description: data.description || "",
-      date: data.date || "",
+      description: data.description || data.meta_description || "",
+      date: data.date || "2026-10-15",
       tags: data.tags || [],
       author: data.author || "Cybexonics Team",
       readTime: data.readTime || "5 min read",
+      meta_title: data.meta_title || data.title || "",
+      meta_description: data.meta_description || data.description || "",
+      category: data.category || "SEO",
+      cover_image_alt: data.cover_image_alt || "",
       content,
     }
   } catch {
