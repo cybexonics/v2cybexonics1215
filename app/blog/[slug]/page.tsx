@@ -7,6 +7,10 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import SchemaMarkup from "@/components/SchemaMarkup"
 import BlogShareBar from "@/components/BlogShareBar"
+import DemoEmbed from "@/components/DemoEmbed"
+import ComparisonTable from "@/components/ComparisonTable"
+import SpaComparisonTable from "@/components/SpaComparisonTable"
+import remarkGfm from "remark-gfm"
 
 type Props = {
   params: { slug: string }
@@ -110,7 +114,35 @@ export default function BlogPostPage({ params }: Props) {
         }
       : null
 
-  const pageSchemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])]
+  const softwareSchema =
+    post.slug === "spa-management-software-uk"
+      ? {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "Cybexonics Spa OS",
+          applicationCategory: "BusinessApplication",
+          operatingSystem: "Web, Android",
+          offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "GBP",
+            description: "Free live demo with up to 5 customer records",
+          },
+          url: "https://cybexonics-spa-os-demo.vercel.app/",
+          author: {
+            "@type": "Organization",
+            name: "Cybexonics IT Consultants Pvt. Ltd.",
+            url: "https://www.cybexonics.com",
+          },
+        }
+      : null
+
+  const pageSchemas = [
+    articleSchema,
+    breadcrumbSchema,
+    ...(faqSchema ? [faqSchema] : []),
+    ...(softwareSchema ? [softwareSchema] : []),
+  ]
 
   return (
     <div className="min-h-screen bg-white">
@@ -183,7 +215,53 @@ export default function BlogPostPage({ params }: Props) {
             prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded
             prose-blockquote:border-l-4 prose-blockquote:border-red-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-500
           ">
-            <MDXRemote source={post.content} />
+            <MDXRemote
+              source={post.content}
+              components={{
+                DemoEmbed,
+                ComparisonTable,
+                SpaComparisonTable,
+                table: ({ children, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
+                  <div className="my-8 rounded-2xl border border-[#D4AF37]/30 shadow-md bg-white overflow-hidden not-prose">
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left border-collapse min-w-[640px] text-sm" {...props}>
+                        {children}
+                      </table>
+                    </div>
+                  </div>
+                ),
+                thead: ({ children, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
+                  <thead className="bg-[#0B132B] text-white" {...props}>
+                    {children}
+                  </thead>
+                ),
+                tbody: ({ children, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
+                  <tbody className="divide-y divide-gray-100" {...props}>
+                    {children}
+                  </tbody>
+                ),
+                tr: ({ children, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
+                  <tr className="even:bg-slate-50/70 odd:bg-white hover:bg-amber-50/30 transition-colors" {...props}>
+                    {children}
+                  </tr>
+                ),
+                th: ({ children, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) => (
+                  <th className="px-4 py-3.5 text-xs font-semibold uppercase tracking-wider text-slate-200 border-b border-gray-700" {...props}>
+                    {children}
+                  </th>
+                ),
+                td: ({ children, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) => (
+                  <td className="px-4 py-3.5 text-slate-600" {...props}>
+                    {children}
+                  </td>
+                ),
+              }}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                },
+              }}
+            />
           </div>
 
           {/* Dedicated Rich Quick Share Bar at bottom of article */}
