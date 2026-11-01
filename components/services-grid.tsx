@@ -1,10 +1,11 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Code, Cloud, Brain, Smartphone, Palette, Settings, TrendingUp } from "lucide-react"
+import { motion, useReducedMotion } from "framer-motion"
+import { Code, Cloud, Smartphone, Palette, Settings, TrendingUp } from "lucide-react"
 
 export default function ServicesGrid() {
+  const shouldReduceMotion = useReducedMotion()
+
   const services = [
     {
       icon: Code,
@@ -21,11 +22,11 @@ export default function ServicesGrid() {
       features: ["Cloud Architecture", "Multi-tenant", "API Integration", "Analytics"],
     },
     {
-  icon: TrendingUp,
-  title: "SEO & Search Visibility",
-  description: "Data-driven SEO strategies that rank your business higher and drive qualified organic traffic",
-  color: "from-green-500 to-green-600",
-  features: ["Technical SEO Audit", "On-Page Optimization", "Schema Markup", "Content Strategy"],
+      icon: TrendingUp,
+      title: "SEO & Search Visibility",
+      description: "Data-driven SEO strategies that rank your business higher and drive qualified organic traffic",
+      color: "from-green-500 to-green-600",
+      features: ["Technical SEO Audit", "On-Page Optimization", "Schema Markup", "Content Strategy"],
     },
     {
       icon: Smartphone,
@@ -50,82 +51,102 @@ export default function ServicesGrid() {
     },
   ]
 
+  const headerVariants = {
+    hidden: {
+      opacity: shouldReduceMotion ? 1 : 0,
+      y: shouldReduceMotion ? 0 : 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.6,
+        ease: [0.25, 0.1, 0.25, 1],
+      },
+    },
+  }
+
+  const cardVariants = {
+    hidden: {
+      opacity: shouldReduceMotion ? 1 : 0,
+      y: shouldReduceMotion ? 0 : 24,
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.5,
+        delay: shouldReduceMotion ? 0 : index * 0.08,
+        ease: [0.25, 0.1, 0.25, 1],
+      },
+    }),
+  }
+
   return (
-    <div className="max-w-7xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          We offer comprehensive IT solutions designed to transform your business and drive growth through technology.
-        </p>
-      </motion.div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <motion.div
-            key={service.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{
-              y: -15,
-              scale: 1.02,
-              rotateX: 5,
-              rotateY: 5,
-            }}
-            className="group perspective-1000"
+    <section
+      className="w-full py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7] dark:bg-[#000000] transition-colors duration-300"
+      aria-labelledby="services-section-heading"
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Section Heading & Subheading */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={headerVariants}
+          className="text-center mb-14 md:mb-20"
+        >
+          <h2
+            id="services-section-heading"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#1D1D1F] dark:text-white mb-4"
           >
-            <Card className="h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white/80 backdrop-blur-sm transform-gpu">
-              <CardContent className="p-8">
-                <motion.div
-                  whileHover={{
-                    scale: 1.1,
-                    rotateY: 180,
-                  }}
-                  transition={{ duration: 0.6 }}
-                  className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center transform-gpu preserve-3d`}
-                >
-                  <service.icon className="h-8 w-8 text-white" />
-                </motion.div>
+            Our Services
+          </h2>
+          <p className="text-[17px] md:text-xl text-[#6E6E73] dark:text-[#A1A1A6] max-w-2xl mx-auto leading-relaxed">
+            We offer comprehensive IT solutions designed to transform your business and drive growth through technology.
+          </p>
+        </motion.div>
 
-                <h3 className="text-xl font-semibold mb-4 text-center group-hover:text-red-600 transition-colors duration-300">
+        {/* 6 Cards Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={cardVariants}
+              className="h-full"
+            >
+              <article
+                className="group relative h-full flex flex-col items-start text-left rounded-[28px] md:rounded-[32px] bg-[#FFFFFF] dark:bg-[#1D1D1F] p-7 sm:p-8 md:p-9 ring-1 ring-black/5 dark:ring-white/10 shadow-[0_2px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_20px_rgba(0,0,0,0.4)] md:hover:-translate-y-1 md:hover:shadow-[0_12px_32px_rgba(0,0,0,0.09)] dark:md:hover:shadow-[0_12px_32px_rgba(0,0,0,0.6)] transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+              >
+                {/* Soft Rounded Squircle Icon Tile with Gradient and Inner Highlight */}
+                <div
+                  className={`w-[56px] h-[56px] rounded-[18px] bg-gradient-to-b ${service.color} flex items-center justify-center shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] transition-transform duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] md:group-hover:scale-105 shrink-0`}
+                >
+                  <service.icon
+                    className="w-6 h-6 text-white"
+                    strokeWidth={1.75}
+                    aria-hidden="true"
+                  />
+                </div>
+
+                {/* Card Title */}
+                <h3 className="text-[22px] font-semibold tracking-tight text-[#1D1D1F] dark:text-white mt-6 mb-3">
                   {service.title}
                 </h3>
 
-                <p className="text-gray-600 text-center mb-6 leading-relaxed">{service.description}</p>
-
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  whileHover={{ opacity: 1, height: "auto" }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <ul className="space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <motion.li
-                        key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileHover={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.2, delay: idx * 0.1 }}
-                        className="flex items-center text-sm text-gray-600"
-                      >
-                        <div className="w-2 h-2 bg-red-500 rounded-full mr-3" />
-                        {feature}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </motion.div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
+                {/* Card Description */}
+                <p className="text-[16px] leading-relaxed text-[#6E6E73] dark:text-[#A1A1A6] max-w-[34ch]">
+                  {service.description}
+                </p>
+              </article>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   )
 }

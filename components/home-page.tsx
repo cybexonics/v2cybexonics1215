@@ -2,14 +2,14 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import ServicesGrid from "@/components/services-grid"
 import PricingSection from "@/components/pricing-section"
 import TrustedBySection from "@/components/trusted-by-section"
+import WhyChooseBento from "@/components/why-choose-bento"
 import Link from "next/link"
-import { ArrowRight, Users, Award, Zap, Globe, Code, Lightbulb } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 export default function HomePageContent() {
   const stats = [
@@ -19,38 +19,7 @@ export default function HomePageContent() {
     { number: "24/7", label: "Support Available" },
   ]
 
-  const features = [
-    {
-      icon: Code,
-      title: "Custom Development",
-      description: "Tailored solutions built specifically for your business needs and requirements.",
-    },
-    {
-      icon: Zap,
-      title: "Fast Delivery",
-      description: "Quick turnaround times without compromising on quality or functionality.",
-    },
-    {
-      icon: Globe,
-      title: "Modern Technology",
-      description: "Using the latest frameworks and technologies for future-proof solutions.",
-    },
-    {
-      icon: Users,
-      title: "Expert Team",
-      description: "Experienced developers and designers dedicated to your project success.",
-    },
-    {
-      icon: Award,
-      title: "Quality Assurance",
-      description: "Rigorous testing and quality checks ensure reliable, bug-free applications.",
-    },
-    {
-      icon: Lightbulb,
-      title: "Innovation Focus",
-      description: "Creative problem-solving and innovative approaches to complex challenges.",
-    },
-  ]
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -110,7 +79,7 @@ export default function HomePageContent() {
               <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-black via-gray-800 to-red-600 bg-clip-text text-transparent">
                 CYBEXONICS
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 font-light">IT Consultants</p>
+              <p className="text-xl md:text-2xl text-gray-600 font-light">IT Consultants Pvt. Ltd.</p>
             </motion.div>
 
             {/* Main Heading */}
@@ -197,48 +166,8 @@ export default function HomePageContent() {
       {/* Trusted By Section */}
       <TrustedBySection />
 
-      {/* Features Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Why Choose <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">CYBEXONICS?</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We combine technical expertise with business understanding to deliver solutions that drive real results.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
-                  <CardContent className="p-8">
-                    <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
-                      <feature.icon className="h-8 w-8 text-white" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Why Choose CYBEXONICS Bento Grid Section */}
+      <WhyChooseBento />
 
       {/* Pricing Section */}
       <PricingSection />
