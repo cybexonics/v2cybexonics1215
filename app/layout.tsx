@@ -91,13 +91,8 @@ export const viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-<<<<<<< HEAD
     <html lang="en-IN" suppressHydrationWarning>
-      <body className={inter.className}>
-=======
-    <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
->>>>>>> b7f0771af9be3af057e7b0d37aa6ed00b1f7df78
         <SchemaMarkup schema={[organizationSchema, websiteSchema]} />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
