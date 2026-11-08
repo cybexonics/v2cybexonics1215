@@ -48,7 +48,7 @@ const TrustedBySection = () => {
     const duplicatedClients = [...clients, ...clients]
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-[var(--section-white)] transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -58,20 +58,20 @@ const TrustedBySection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white">
             Trusted By Leading{' '}
             <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
               Companies
             </span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-[#A1A1A6] max-w-3xl mx-auto">
             We partner with innovative companies of all sizes to deliver transformative IT solutions and drive business growth.
           </p>
         </motion.div>
 
         {/* Logo Slider */}
         <div
-          className="relative overflow-hidden bg-gradient-to-r from-white via-gray-50 to-white rounded-2xl p-8"
+          className="relative overflow-hidden bg-neutral-900/[0.04] dark:bg-white/[0.04] rounded-2xl p-8 transition-colors duration-300"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -93,7 +93,7 @@ const TrustedBySection = () => {
                 href={client.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-shrink-0 h-20 w-40 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 group cursor-pointer overflow-hidden"
+                className="flex-shrink-0 h-20 w-40 flex items-center justify-center bg-[var(--section-white)] rounded-lg shadow-sm border border-black/5 dark:border-white/10 hover:shadow-md transition-shadow duration-300 group cursor-pointer overflow-hidden"
                 whileHover={{ scale: 1.05 }}
   >
     <div className="w-32 h-16 relative">
@@ -110,8 +110,18 @@ const TrustedBySection = () => {
     </div>
 
           {/* Gradient overlays for smooth edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
+          <div
+            className="absolute left-0 top-0 bottom-0 w-20 pointer-events-none z-10"
+            style={{
+              background: "linear-gradient(to right, var(--section-white), transparent)",
+            }}
+          />
+          <div
+            className="absolute right-0 top-0 bottom-0 w-20 pointer-events-none z-10"
+            style={{
+              background: "linear-gradient(to left, var(--section-white), transparent)",
+            }}
+          />
 
           {/* Hover indicator */}
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs text-gray-400 font-medium">

@@ -10,13 +10,27 @@ export const metadata: Metadata = {
   title: "Blog — Web Development & SEO Insights",
   description: "Expert articles on web development, SEO, mobile apps and IT from Cybexonics — IT consultants in Baramati, Pune.",
   alternates: {
-    canonical: "https://www.cybexonics.com/blog",
+    canonical: "/blog",
   },
   openGraph: {
-    title: "Blog — Web Development & SEO Insights | Cybexonics",
+    title: "Blog — Web Development & SEO Insights",
     description: "Expert articles on web development, SEO, mobile apps and IT from Cybexonics — IT consultants in Baramati, Pune.",
-    url: "https://www.cybexonics.com/blog",
+    url: "/blog",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Cybexonics",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog — Web Development & SEO Insights",
+    description: "Expert articles on web development, SEO, mobile apps and IT from Cybexonics — IT consultants in Baramati, Pune.",
+    images: ["/og-image.jpg"],
   },
 }
 

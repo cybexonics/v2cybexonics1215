@@ -106,7 +106,7 @@ export default function Navigation() {
               <div className="relative w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center shrink-0">
                 <Image
                   src="/images/logo_1080.png"
-                  alt="CYBEXONICS Logo"
+                  alt="Cybexonics logo"
                   width={32}
                   height={32}
                   className="w-full h-full object-contain drop-shadow-[0_1px_3px_rgba(0,0,0,0.08)]"

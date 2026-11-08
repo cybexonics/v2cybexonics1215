@@ -84,9 +84,17 @@ export default function ServicesGrid() {
 
   return (
     <section
-      className="w-full py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7] dark:bg-[#000000] transition-colors duration-300"
+      className="relative w-full py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-[var(--section-grey)] transition-colors duration-300"
       aria-labelledby="services-section-heading"
     >
+      {/* Soft 96px vertical gradient at the top from white to grey */}
+      <div
+        className="absolute top-0 left-0 right-0 h-24 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, var(--section-white), var(--section-grey))",
+        }}
+        aria-hidden="true"
+      />
       <div className="max-w-6xl mx-auto">
         {/* Section Heading & Subheading */}
         <motion.div

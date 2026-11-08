@@ -1,6 +1,9 @@
 export const metadata = {
-  title: 'Privacy Policy | Cybexonics',
+  title: 'Privacy Policy',
   description: 'Privacy policy for Cybexonics IT Consultants Pvt. Ltd. and its apps and products.',
+  alternates: {
+    canonical: '/privacy-policy',
+  },
 };
 
 export default function PrivacyPolicyPage() {

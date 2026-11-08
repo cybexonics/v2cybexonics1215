@@ -278,7 +278,7 @@ export default function WhyChooseBento() {
 
   return (
     <section
-      className="w-full py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-[#F5F5F7] dark:bg-[#000000] transition-colors duration-300"
+      className="w-full py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-[var(--section-white)] transition-colors duration-300"
       aria-labelledby="why-choose-heading"
     >
       <div className="max-w-6xl mx-auto">

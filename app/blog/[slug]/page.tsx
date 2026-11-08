@@ -20,26 +20,36 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(params.slug)
   if (!post) return {}
 
-  const title = post.meta_title || post.title
+  const rawTitle = post.meta_title || post.title
+  const title = rawTitle.replace(/\s*\|\s*Cybexonics\s*$/i, "").trim()
   const description = post.meta_description || post.description
 
   return {
     title,
     description,
     alternates: {
-      canonical: `https://www.cybexonics.com/blog/${post.slug}`,
+      canonical: `/blog/${post.slug}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://www.cybexonics.com/blog/${post.slug}`,
+      url: `/blog/${post.slug}`,
       type: "article",
       publishedTime: post.date,
+      images: [
+        {
+          url: "/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["/og-image.jpg"],
     },
   }
 }
@@ -218,6 +228,9 @@ export default function BlogPostPage({ params }: Props) {
             <MDXRemote
               source={post.content}
               components={{
+                h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+                  <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4" {...props} />
+                ),
                 DemoEmbed,
                 ComparisonTable,
                 SpaComparisonTable,

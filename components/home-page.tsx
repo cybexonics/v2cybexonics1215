@@ -22,11 +22,11 @@ export default function HomePageContent() {
 
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[var(--section-white)] transition-colors duration-300">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      <section className="pt-20 pb-16 px-4 bg-[var(--section-white)] relative overflow-hidden transition-colors duration-300">
         {/* Floating Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -140,8 +140,15 @@ export default function HomePageContent() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
+      <section className="relative py-16 px-4 bg-[var(--section-grey)] transition-colors duration-300">
+        <div
+          className="absolute top-0 left-0 right-0 h-24 pointer-events-none"
+          style={{
+            background: "linear-gradient(to bottom, var(--section-white), var(--section-grey))",
+          }}
+          aria-hidden="true"
+        />
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
@@ -153,24 +160,33 @@ export default function HomePageContent() {
                 className="text-center"
               >
                 <div className="text-3xl md:text-4xl font-bold text-red-600 mb-2">{stat.number}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-gray-600 dark:text-[#A1A1A6] font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <ServicesGrid />
-
       {/* Trusted By Section */}
       <TrustedBySection />
+
+      {/* Services Section */}
+      <ServicesGrid />
 
       {/* Why Choose CYBEXONICS Bento Grid Section */}
       <WhyChooseBento />
 
       {/* Pricing Section */}
-      <PricingSection />
+      <section className="relative w-full py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-[var(--section-grey)] transition-colors duration-300">
+        <div
+          className="absolute top-0 left-0 right-0 h-24 pointer-events-none"
+          style={{
+            background: "linear-gradient(to bottom, var(--section-white), var(--section-grey))",
+          }}
+          aria-hidden="true"
+        />
+        <PricingSection />
+      </section>
 
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-red-500 to-red-600 text-white">
