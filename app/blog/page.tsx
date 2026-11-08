@@ -4,6 +4,7 @@ import { getAllPosts } from "@/lib/blog"
 import Link from "next/link"
 import type { Metadata } from "next"
 import SchemaMarkup from "@/components/SchemaMarkup"
+import BlogShareBar from "@/components/BlogShareBar"
 
 export const metadata: Metadata = {
   title: "Blog — Web Development & SEO Insights",
@@ -97,10 +98,18 @@ export default function BlogPage() {
                       <span>{post.readTime}</span>
                     </div>
 
-                    {/* CTA */}
-                    <div className="mt-4 text-sm font-semibold text-red-500 group-hover:text-red-600 flex items-center gap-1">
-                      Read Article
-                      <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+                    {/* CTA & Quick Share */}
+                    <div className="mt-4 flex items-center justify-between pt-2">
+                      <div className="text-sm font-semibold text-red-500 group-hover:text-red-600 flex items-center gap-1">
+                        Read Article
+                        <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+                      </div>
+                      <BlogShareBar
+                        slug={post.slug}
+                        title={post.title}
+                        description={post.description}
+                        variant="card"
+                      />
                     </div>
                   </div>
                 </Link>

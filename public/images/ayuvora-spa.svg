@@ -1,0 +1,311 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap');
+      .title-font { font-family: 'Cinzel', serif, Georgia; }
+      .sans-font { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; }
+    </style>
+    
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070a0c" />
+      <stop offset="40%" stop-color="#0d1419" />
+      <stop offset="100%" stop-color="#090d10" />
+    </linearGradient>
+
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="50%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#141c22" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0e1418" stop-opacity="0.98" />
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <pattern id="spaPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1" fill="#2a3842" opacity="0.3" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGrad)" />
+  <rect width="1200" height="675" fill="url(#spaPattern)" />
+
+  <!-- Ambient Luxury Glow Orbs -->
+  <circle cx="1050" cy="120" r="180" fill="#059669" opacity="0.12" filter="url(#glow)" />
+  <circle cx="150" cy="550" r="220" fill="#d97706" opacity="0.08" filter="url(#glow)" />
+
+  <!-- Browser/App Header Bar -->
+  <g id="top-nav" transform="translate(40, 25)">
+    <rect width="1120" height="64" rx="14" fill="#11191f" stroke="#1f2c36" stroke-width="1.2" filter="url(#softShadow)" />
+    
+    <!-- Window Dots -->
+    <circle cx="24" cy="32" r="5" fill="#ef4444" opacity="0.85" />
+    <circle cx="40" cy="32" r="5" fill="#f59e0b" opacity="0.85" />
+    <circle cx="56" cy="32" r="5" fill="#10b981" opacity="0.85" />
+
+    <!-- Lotus / Spa Emblem -->
+    <g transform="translate(85, 18)">
+      <path d="M 14 6 C 14 6, 8 16, 8 22 C 8 26, 11 28, 14 28 C 17 28, 20 26, 20 22 C 20 16, 14 6, 14 6 Z" fill="url(#goldGrad)" />
+      <path d="M 14 12 C 14 12, 3 18, 3 23 C 3 26, 6 28, 10 27 C 12 25, 13 22, 14 12 Z" fill="#f59e0b" opacity="0.75" />
+      <path d="M 14 12 C 14 12, 25 18, 25 23 C 25 26, 22 28, 18 27 C 16 25, 15 22, 14 12 Z" fill="#f59e0b" opacity="0.75" />
+    </g>
+
+    <!-- Brand Name -->
+    <text x="122" y="38" class="title-font" font-size="20" font-weight="700" fill="#ffffff" letter-spacing="3">AYUVORA</text>
+    <text x="248" y="37" class="sans-font" font-size="11" font-weight="600" fill="#10b981" letter-spacing="1.5">WELLNESS SPA &amp; RECEPTION</text>
+
+    <!-- System Status Badge -->
+    <g transform="translate(480, 20)">
+      <rect width="180" height="26" rx="13" fill="#062e22" stroke="#059669" stroke-width="1" />
+      <circle cx="14" cy="13" r="4" fill="#10b981" filter="url(#glow)" />
+      <text x="26" y="17" class="sans-font" font-size="11" font-weight="600" fill="#6ee7b7">RECEPTION ACTIVE</text>
+    </g>
+
+    <!-- Quick Link / Live URL Badge -->
+    <g transform="translate(680, 20)">
+      <rect width="210" height="26" rx="13" fill="#1a252f" stroke="#2a3d4d" stroke-width="1" />
+      <text x="14" y="17" class="sans-font" font-size="11" font-weight="500" fill="#94a3b8">demo: ayuvora.vercel.app</text>
+    </g>
+
+    <!-- Contact & Receptionist Profile -->
+    <g transform="translate(910, 16)">
+      <rect width="190" height="34" rx="8" fill="#16222a" stroke="#253542" stroke-width="1" />
+      <!-- Phone icon -->
+      <path d="M 16 11 C 15 11, 14 12, 14 13 C 14 19, 19 24, 25 24 C 26 24, 27 23, 27 22 L 25.5 19 C 25.2 18.5, 24.5 18.4, 24 18.7 L 23 19.3 C 21 18.2, 19.8 17, 18.7 15 L 19.3 14 C 19.6 13.5, 19.5 12.8, 19 12.5 L 16 11 Z" fill="#f59e0b" />
+      <text x="34" y="18" class="sans-font" font-size="9" font-weight="500" fill="#94a3b8">Call For Details</text>
+      <text x="34" y="29" class="sans-font" font-size="12" font-weight="700" fill="#f59e0b">9604902393</text>
+    </g>
+  </g>
+
+  <!-- KPI Metrics Banner -->
+  <g id="kpi-row" transform="translate(40, 105)">
+    <!-- Metric 1 -->
+    <g transform="translate(0, 0)">
+      <rect width="265" height="76" rx="12" fill="url(#cardGrad)" stroke="#1e2c36" stroke-width="1.2" />
+      <text x="18" y="26" class="sans-font" font-size="11" font-weight="600" fill="#94a3b8" letter-spacing="1">TODAY'S APPOINTMENTS</text>
+      <text x="18" y="58" class="sans-font" font-size="28" font-weight="700" fill="#ffffff">28 <tspan font-size="14" font-weight="500" fill="#10b981">+18%</tspan></text>
+      <circle cx="235" cy="38" r="18" fill="#122a22" />
+      <!-- Calendar icon -->
+      <rect x="227" y="30" width="16" height="15" rx="2" fill="none" stroke="#10b981" stroke-width="1.8" />
+      <line x1="227" y1="35" x2="243" y2="35" stroke="#10b981" stroke-width="1.8" />
+    </g>
+
+    <!-- Metric 2 -->
+    <g transform="translate(285, 0)">
+      <rect width="265" height="76" rx="12" fill="url(#cardGrad)" stroke="#1e2c36" stroke-width="1.2" />
+      <text x="18" y="26" class="sans-font" font-size="11" font-weight="600" fill="#94a3b8" letter-spacing="1">DAILY BILLING REVENUE</text>
+      <text x="18" y="58" class="sans-font" font-size="28" font-weight="700" fill="#fbbf24">₹48,250</text>
+      <circle cx="235" cy="38" r="18" fill="#2c2211" />
+      <text x="231" y="44" class="sans-font" font-size="16" font-weight="700" fill="#f59e0b">₹</text>
+    </g>
+
+    <!-- Metric 3 -->
+    <g transform="translate(570, 0)">
+      <rect width="265" height="76" rx="12" fill="url(#cardGrad)" stroke="#1e2c36" stroke-width="1.2" />
+      <text x="18" y="26" class="sans-font" font-size="11" font-weight="600" fill="#94a3b8" letter-spacing="1">THERAPY SUITES OCCUPIED</text>
+      <text x="18" y="58" class="sans-font" font-size="28" font-weight="700" fill="#ffffff">7 / 8 <tspan font-size="13" font-weight="500" fill="#38bdf8">(88%)</tspan></text>
+      <circle cx="235" cy="38" r="18" fill="#132635" />
+      <!-- Door/Room icon -->
+      <rect x="229" y="29" width="12" height="18" rx="1.5" fill="none" stroke="#38bdf8" stroke-width="1.8" />
+      <circle cx="238" cy="39" r="1" fill="#38bdf8" />
+    </g>
+
+    <!-- Metric 4 -->
+    <g transform="translate(855, 0)">
+      <rect width="265" height="76" rx="12" fill="url(#cardGrad)" stroke="#1e2c36" stroke-width="1.2" />
+      <text x="18" y="26" class="sans-font" font-size="11" font-weight="600" fill="#94a3b8" letter-spacing="1">ACTIVE THERAPISTS ON DUTY</text>
+      <text x="18" y="58" class="sans-font" font-size="28" font-weight="700" fill="#a78bfa">9 Staff <tspan font-size="12" font-weight="500" fill="#94a3b8">Ready</tspan></text>
+      <circle cx="235" cy="38" r="18" fill="#241a38" />
+      <circle cx="235" cy="35" r="5" fill="none" stroke="#a78bfa" stroke-width="1.8" />
+      <path d="M 226 46 C 226 42, 230 40, 235 40 C 240 40, 244 42, 244 46" fill="none" stroke="#a78bfa" stroke-width="1.8" />
+    </g>
+  </g>
+
+  <!-- Main Content Layout Grid -->
+  <g id="main-content" transform="translate(40, 198)">
+    
+    <!-- LEFT PANEL: Appointment & Therapy Schedule (Width: 680) -->
+    <g id="schedule-panel">
+      <rect width="680" height="440" rx="14" fill="url(#cardGrad)" stroke="#1e2c36" stroke-width="1.2" filter="url(#softShadow)" />
+      
+      <!-- Panel Header -->
+      <text x="24" y="32" class="title-font" font-size="16" font-weight="700" fill="#ffffff" letter-spacing="1">TODAY'S THERAPY SUITES &amp; SCHEDULE</text>
+      <text x="24" y="49" class="sans-font" font-size="11" fill="#94a3b8">Real-time room occupancy, therapist allocation, and treatment tracking</text>
+
+      <!-- Filter Tabs -->
+      <g transform="translate(400, 18)">
+        <rect width="70" height="24" rx="12" fill="#10b981" />
+        <text x="18" y="16" class="sans-font" font-size="11" font-weight="600" fill="#ffffff">All Suites</text>
+        <rect x="76" y="0" width="84" height="24" rx="12" fill="#16222a" stroke="#253542" stroke-width="1" />
+        <text x="89" y="16" class="sans-font" font-size="11" font-weight="500" fill="#94a3b8">Ayurvedic (4)</text>
+        <rect x="166" y="0" width="88" height="24" rx="12" fill="#16222a" stroke="#253542" stroke-width="1" />
+        <text x="178" y="16" class="sans-font" font-size="11" font-weight="500" fill="#94a3b8">Massage (3)</text>
+      </g>
+
+      <!-- Row 1: Active Session -->
+      <g transform="translate(20, 68)">
+        <rect width="640" height="78" rx="10" fill="#101c18" stroke="#059669" stroke-width="1.4" />
+        <rect x="0" y="0" width="6" height="78" rx="3" fill="#10b981" />
+        
+        <text x="22" y="26" class="sans-font" font-size="12" font-weight="700" fill="#34d399">SUITE 101 • AYURVEDIC SANCTUARY</text>
+        <text x="22" y="48" class="title-font" font-size="15" font-weight="700" fill="#ffffff">Abhyanga Herbal Bodywork (75 mins)</text>
+        <text x="22" y="66" class="sans-font" font-size="11" fill="#94a3b8">Therapist: <tspan fill="#e2e8f0" font-weight="600">Devika Nair</tspan> | Guest: <tspan fill="#e2e8f0">Meera Patel (VIP)</tspan></text>
+
+        <!-- Status Tag -->
+        <g transform="translate(500, 14)">
+          <rect width="124" height="26" rx="13" fill="#064e3b" stroke="#10b981" stroke-width="1" />
+          <circle cx="16" cy="13" r="4" fill="#34d399" filter="url(#glow)" />
+          <text x="28" y="17" class="sans-font" font-size="11" font-weight="600" fill="#6ee7b7">IN SESSION (45m)</text>
+        </g>
+        <text x="560" y="60" class="sans-font" font-size="12" font-weight="700" fill="#fbbf24">₹3,800</text>
+      </g>
+
+      <!-- Row 2: Upcoming Appointment -->
+      <g transform="translate(20, 156)">
+        <rect width="640" height="78" rx="10" fill="#162028" stroke="#253542" stroke-width="1" />
+        <rect x="0" y="0" width="6" height="78" rx="3" fill="#f59e0b" />
+        
+        <text x="22" y="26" class="sans-font" font-size="12" font-weight="700" fill="#fbbf24">SUITE 102 • AROMATHERAPY RETREAT</text>
+        <text x="22" y="48" class="title-font" font-size="15" font-weight="700" fill="#ffffff">Royal Swedish Aromatherapy &amp; Steam (90 mins)</text>
+        <text x="22" y="66" class="sans-font" font-size="11" fill="#94a3b8">Therapist: <tspan fill="#e2e8f0" font-weight="600">Rohan Varma</tspan> | Guest: <tspan fill="#e2e8f0">Amitabh Joshi</tspan></text>
+
+        <g transform="translate(500, 14)">
+          <rect width="124" height="26" rx="13" fill="#3b2606" stroke="#f59e0b" stroke-width="1" />
+          <circle cx="16" cy="13" r="4" fill="#f59e0b" />
+          <text x="28" y="17" class="sans-font" font-size="11" font-weight="600" fill="#fde68a">NEXT: 15:30 HRS</text>
+        </g>
+        <text x="560" y="60" class="sans-font" font-size="12" font-weight="700" fill="#fbbf24">₹4,500</text>
+      </g>
+
+      <!-- Row 3: In Session Facial / Sauna -->
+      <g transform="translate(20, 244)">
+        <rect width="640" height="78" rx="10" fill="#101c18" stroke="#059669" stroke-width="1.4" />
+        <rect x="0" y="0" width="6" height="78" rx="3" fill="#10b981" />
+        
+        <text x="22" y="26" class="sans-font" font-size="12" font-weight="700" fill="#34d399">SUITE 103 • BOTANICAL SPA</text>
+        <text x="22" y="48" class="title-font" font-size="15" font-weight="700" fill="#ffffff">Kumkumadi Glow Facial &amp; Head Therapy (60 mins)</text>
+        <text x="22" y="66" class="sans-font" font-size="11" fill="#94a3b8">Therapist: <tspan fill="#e2e8f0" font-weight="600">Pooja Sharma</tspan> | Guest: <tspan fill="#e2e8f0">Sneha Kulkarni</tspan></text>
+
+        <g transform="translate(500, 14)">
+          <rect width="124" height="26" rx="13" fill="#064e3b" stroke="#10b981" stroke-width="1" />
+          <circle cx="16" cy="13" r="4" fill="#34d399" filter="url(#glow)" />
+          <text x="28" y="17" class="sans-font" font-size="11" font-weight="600" fill="#6ee7b7">IN SESSION (20m)</text>
+        </g>
+        <text x="560" y="60" class="sans-font" font-size="12" font-weight="700" fill="#fbbf24">₹2,950</text>
+      </g>
+
+      <!-- Row 4: Ready Suite -->
+      <g transform="translate(20, 332)">
+        <rect width="640" height="78" rx="10" fill="#141c22" stroke="#253542" stroke-width="1" />
+        <rect x="0" y="0" width="6" height="78" rx="3" fill="#38bdf8" />
+        
+        <text x="22" y="26" class="sans-font" font-size="12" font-weight="700" fill="#38bdf8">SUITE 104 • HYDROTHERAPY &amp; SAUNA</text>
+        <text x="22" y="48" class="title-font" font-size="15" font-weight="700" fill="#ffffff">Deep Tissue Restorative &amp; Heated Salt Bed</text>
+        <text x="22" y="66" class="sans-font" font-size="11" fill="#94a3b8">Sanitized &amp; Prepared | Therapist Assigned: <tspan fill="#e2e8f0">Karan Rao</tspan></text>
+
+        <g transform="translate(500, 14)">
+          <rect width="124" height="26" rx="13" fill="#0c2d3e" stroke="#38bdf8" stroke-width="1" />
+          <text x="22" y="17" class="sans-font" font-size="11" font-weight="600" fill="#bae6fd">READY FOR CHECKIN</text>
+        </g>
+        <text x="560" y="60" class="sans-font" font-size="12" font-weight="700" fill="#fbbf24">₹3,200</text>
+      </g>
+    </g>
+
+    <!-- RIGHT PANEL: Reception Desk & POS Billing (Width: 410) -->
+    <g id="pos-panel" transform="translate(710, 0)">
+      <rect width="410" height="440" rx="14" fill="url(#cardGrad)" stroke="#1e2c36" stroke-width="1.2" filter="url(#softShadow)" />
+
+      <!-- Panel Title -->
+      <text x="24" y="32" class="title-font" font-size="16" font-weight="700" fill="#ffffff" letter-spacing="1">RECEPTION CHECK-IN &amp; POS</text>
+      <text x="24" y="49" class="sans-font" font-size="11" fill="#94a3b8">Fast guest billing, packages, and instant receipt</text>
+
+      <!-- Active Guest Form -->
+      <g transform="translate(20, 68)">
+        <rect width="370" height="66" rx="8" fill="#131b21" stroke="#253542" stroke-width="1" />
+        <circle cx="34" cy="33" r="16" fill="#1d2830" />
+        <!-- User icon -->
+        <circle cx="34" cy="28" r="5" fill="#f59e0b" />
+        <path d="M 26 39 C 26 36, 30 35, 34 35 C 38 35, 42 36, 42 39" fill="#f59e0b" />
+        
+        <text x="60" y="27" class="sans-font" font-size="13" font-weight="700" fill="#ffffff">Ayuvora Guest #8410</text>
+        <text x="60" y="44" class="sans-font" font-size="11" fill="#94a3b8">+91 98201 44820 • Gold Member</text>
+        <rect x="290" y="18" width="68" height="20" rx="10" fill="#2c2211" stroke="#f59e0b" stroke-width="0.8" />
+        <text x="298" y="32" class="sans-font" font-size="9" font-weight="700" fill="#fbbf24">DISCOUNT 15%</text>
+      </g>
+
+      <!-- Billing Breakdown -->
+      <g transform="translate(20, 148)">
+        <rect width="370" height="175" rx="8" fill="#131b21" stroke="#253542" stroke-width="1" />
+        
+        <text x="18" y="26" class="sans-font" font-size="12" font-weight="700" fill="#ffffff">Selected Treatment Summary</text>
+        
+        <!-- Line items -->
+        <text x="18" y="52" class="sans-font" font-size="12" fill="#cbd5e1">Ayurvedic Sanctuary Ritual (90m)</text>
+        <text x="310" y="52" class="sans-font" font-size="12" font-weight="600" fill="#ffffff">₹4,000</text>
+
+        <text x="18" y="74" class="sans-font" font-size="12" fill="#cbd5e1">Therapeutic Aromatic Steam</text>
+        <text x="322" y="74" class="sans-font" font-size="12" font-weight="600" fill="#ffffff">₹800</text>
+
+        <text x="18" y="96" class="sans-font" font-size="12" fill="#cbd5e1">Organic Herbal Tea &amp; Elixir</text>
+        <text x="306" y="96" class="sans-font" font-size="11" font-weight="600" fill="#10b981">INCLUDED</text>
+
+        <line x1="18" y1="112" x2="352" y2="112" stroke="#253542" stroke-width="1" stroke-dasharray="4,4" />
+
+        <text x="18" y="132" class="sans-font" font-size="11" fill="#94a3b8">Membership Discount (15%)</text>
+        <text x="312" y="132" class="sans-font" font-size="12" font-weight="600" fill="#ef4444">- ₹720</text>
+
+        <text x="18" y="156" class="sans-font" font-size="14" font-weight="800" fill="#ffffff">NET PAYABLE</text>
+        <text x="290" y="156" class="sans-font" font-size="17" font-weight="800" fill="#fbbf24">₹4,080</text>
+      </g>
+
+      <!-- Action Buttons -->
+      <g transform="translate(20, 335)">
+        <!-- Demo CTA -->
+        <a href="https://ayuvora.vercel.app/" target="_blank">
+          <rect width="180" height="42" rx="8" fill="url(#emeraldGrad)" />
+          <text x="40" y="26" class="sans-font" font-size="13" font-weight="700" fill="#ffffff">Open Live Demo</text>
+          <!-- External arrow -->
+          <path d="M 148 18 L 158 18 L 158 28 M 158 18 L 149 27" fill="none" stroke="#ffffff" stroke-width="1.8" />
+        </a>
+
+        <!-- Call For Details CTA -->
+        <a href="tel:9604902393">
+          <g transform="translate(190, 0)">
+            <rect width="180" height="42" rx="8" fill="#1b2832" stroke="#d97706" stroke-width="1.4" />
+            <text x="26" y="18" class="sans-font" font-size="10" font-weight="600" fill="#94a3b8">FOR MORE DETAILS</text>
+            <text x="26" y="32" class="sans-font" font-size="13" font-weight="800" fill="#f59e0b">Call 9604902393</text>
+          </g>
+        </a>
+      </g>
+
+      <!-- Ayuvora Live Demo Bar -->
+      <g transform="translate(20, 390)">
+        <rect width="370" height="34" rx="8" fill="#0d1419" stroke="#1f2c36" stroke-width="1" />
+        <circle cx="20" cy="17" r="4" fill="#10b981" />
+        <text x="32" y="21" class="sans-font" font-size="11" font-weight="500" fill="#94a3b8">Live on Vercel: <tspan fill="#38bdf8" font-weight="600">ayuvora.vercel.app</tspan></text>
+      </g>
+
+    </g>
+  </g>
+
+  <!-- Bottom Accent / Watermark Bar -->
+  <g transform="translate(40, 650)">
+    <line x1="0" y1="0" x2="1120" y2="0" stroke="#1f2c36" stroke-width="1" />
+  </g>
+</svg>

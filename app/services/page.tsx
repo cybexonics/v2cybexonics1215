@@ -64,9 +64,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 px-4">
-        <ServicesGrid />
-      </section>
+      <ServicesGrid />
 
       <Footer />
     </div>

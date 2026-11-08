@@ -108,6 +108,28 @@ body {
 }
 
 
+/* Animated gradient text (8s loop, red tones) */
+@keyframes shift-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient-text {
+    background: linear-gradient(90deg, #dc2626, #ef4444, #991b1b, #dc2626);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shift-gradient 8s ease-in-out infinite;
+}
+
 /* Grayscale filter */
 
 .grayscale {

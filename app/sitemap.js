@@ -3,12 +3,15 @@ import { getAllPosts } from "@/lib/blog"
 export default function sitemap() {
     const posts = getAllPosts()
 
-    const blogUrls = posts.map((post) => ({
-        url: `https://www.cybexonics.com/blog/${post.slug}`,
-        lastModified: new Date(post.date),
-        changeFrequency: "monthly",
-        priority: 0.7,
-    }))
+    const blogUrls = posts.map((post) => {
+        const lastMod = post.date && !isNaN(new Date(post.date).getTime()) ? new Date(post.date) : new Date()
+        return {
+            url: `https://www.cybexonics.com/blog/${post.slug}`,
+            lastModified: lastMod,
+            changeFrequency: "monthly",
+            priority: 0.7,
+        }
+    })
 
     return [{
             url: "https://www.cybexonics.com",
